@@ -1,4 +1,4 @@
-<h1 align="center">Salesforce Learning Via ChatGPT</h1>
+<h1 align="center">Salesforce Admin Learning Doc</h1>
 
 Lesson 1 --- Introduction to Salesforce and CRM
 =======================================================
