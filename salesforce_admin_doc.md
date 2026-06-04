@@ -962,7 +962,9 @@ Implemented using Junction Object.
 Example:
 
 ```
-Employee↓Enrollment↓Course
+Employee
+ ↓
+Enrollment↓Course
 ```
 
 One employee → many courses\
@@ -975,11 +977,11 @@ Our project:
 
 ```
 Employee
-↓
+  ↓
 Enrollment
-↓
+  ↓
 Course
-↓
+  ↓
 Certification
 ```
 
@@ -1195,4 +1197,625 @@ This design also allows Roll-Up Summaries and strong relationship control.
 -   Lookup → Flexible
 -   Master-Detail → Parent controls Child
 -   Many-to-Many → Junction Object + 2 Master-Details ✅
+
+Lesson 5 --- Create Objects & Fields (Hands-On Admin Work)
+========================================================
+
+Now we start building.
+
+Objective
+---------
+
+Create our first real Salesforce application data model.
+
+We will create:
+
+```
+Employee__c
+Course__c
+Enrollment__c
+```
+
+and configure fields.
+
+* * * * *
+
+Step 1 --- Create Employee Object
+===============================
+
+Go:
+
+```
+Setup
+  ↓
+Object Manager
+  ↓
+Create
+  ↓
+Custom Object
+```
+
+Create:
+
+| Property | Value |
+| --- | --- |
+| Label | Employee |
+| Plural Label | Employees |
+| Object Name | Employee |
+| Record Name | Employee ID |
+| Data Type | Auto Number |
+
+Click:\
+✔ Allow Reports\
+✔ Allow Activities\
+✔ Launch Tab Wizard
+
+Save.
+
+* * * * *
+
+Step 2 --- Create Fields in Employee
+==================================
+
+Open:
+
+```
+Employee
+ ↓
+Fields & Relationships
+ ↓
+New
+```
+
+Create:
+
+| Field Label | Type |
+| --- | --- |
+| Employee Name | Text |
+| Email | Email |
+| Department | Picklist |
+| Experience | Number |
+| Is Certified | Checkbox |
+
+Department values:
+
+```
+DevOps
+Salesforce
+ServiceNow
+CybersecurityCloud
+```
+
+* * * * *
+
+Step 3 --- Create Course Object
+=============================
+
+Create:
+
+| Property | Value |
+| --- | --- |
+| Label | Course |
+| Record Name | Course Name |
+
+Fields:
+
+| Field | Type |
+| --- | --- |
+| Duration | Number |
+| Category | Picklist |
+| Cost | Currency |
+
+Category:
+
+```
+Technical
+Soft Skills
+Leadership
+```
+
+* * * * *
+
+Step 4 --- Design Enrollment Object
+=================================
+
+Question only (do not create yet):
+
+Enrollment should contain:
+
+-   Employee
+-   Course
+-   Enrollment Date
+-   Status
+
+Think:\
+Which fields should be:
+
+-   Master Detail?
+-   Date?
+-   Picklist?
+
+Step 4 --- Design Enrollment Object (Answer)
+=================================
+
+Enrollment should contain these fields:
+
+| Field | Type |
+| --- | --- |
+| Employee | **Master-Detail Relationship (Employee)** |
+| Course | **Master-Detail Relationship (Course)** |
+| Enrollment Date | **Date** |
+| Status | **Picklist** |
+
+Suggested **Status** Picklist values:
+
+-   Enrolled
+-   In Progress
+-   Completed
+-   Cancelled
+
+### Why?
+
+-   **Employee → Master-Detail** → Each enrollment must belong to one employee.
+-   **Course → Master-Detail** → Each enrollment must belong to one course.
+-   **Enrollment Date → Date** → Stores the date of enrollment.
+-   **Status → Picklist** → Restricts users to predefined status values.
+
+Relationship design:
+
+```
+Employee   
+  ↑
+Master-Detail   
+  |
+Enrollment   
+  |
+Master-Detail   
+  ↓
+Course
+```
+
+This creates a **Many-to-Many relationship**:
+
+-   One Employee → Many Courses
+-   One Course → Many Employees
+
+So the **Enrollment object acts as the Junction Object**. ✅
+
+Assignment
+==========
+
+Answer:
+
+### Q1. Why did we use Auto Number for Employee ID?
+
+### Q2. Which field type would you use for Department and why?
+
+### Q3. If Cost stores ₹ values, which field type should be used?
+
+### Q4. For Enrollment object, define fields and data types.
+
+### Q5. Which relationships should Enrollment contain?
+
+************
+
+### Q1. Why did we use Auto Number for Employee ID?
+
+We use **Auto Number** for Employee ID because Salesforce automatically generates a **unique identifier** for each employee record.
+
+Benefits:
+
+-   No manual entry
+-   Prevents duplicate IDs
+-   Maintains consistent format
+-   Saves admin effort
+
+Example:
+
+```
+EMP-0001
+EMP-0002
+EMP-0003
+```
+
+* * * * *
+
+### Q2. Which field type would you use for Department and why?
+
+Use **Picklist**.
+
+Reason:
+
+-   Restricts users to predefined values
+-   Maintains data consistency
+-   Prevents spelling mistakes and duplicates
+
+Example values:
+
+-   DevOps
+-   Salesforce
+-   ServiceNow
+-   Cybersecurity
+-   Cloud
+
+* * * * *
+
+### Q3. If Cost stores ₹ values, which field type should be used?
+
+Use **Currency** field type.
+
+Reason:
+
+-   Designed to store monetary values
+-   Supports currency formatting
+-   Allows calculations and reporting
+
+Example:
+
+```
+₹5,000
+₹12,500
+₹25,000
+```
+
+* * * * *
+
+### Q4. For Enrollment object, define fields and data types.
+
+| Field | Data Type |
+| --- | --- |
+| Employee | Master-Detail (Employee) |
+| Course | Master-Detail (Course) |
+| Enrollment Date | Date |
+| Status | Picklist |
+
+Suggested Status values:
+
+-   Enrolled
+-   In Progress
+-   Completed
+-   Cancelled
+
+* * * * *
+
+### Q5. Which relationships should Enrollment contain?
+
+Enrollment should contain **two Master-Detail relationships**:
+
+1.  **Enrollment → Employee (Master-Detail)**
+2.  **Enrollment → Course (Master-Detail)**
+
+Reason:\
+This creates a **Many-to-Many relationship** using Enrollment as the **Junction Object**.
+
+Structure:
+
+```
+Employee   
+  ↑
+Master-Detail
+Enrollment
+Master-Detail   
+  ↓
+Course
+```
+
+This allows:
+
+-   One Employee → Multiple Courses
+-   One Course → Multiple Employees ✅
+
+Lesson 6 --- Validation Rules (One of the Most Important Admin Skills)
+====================================================================
+
+Admins use validation rules to stop bad data.
+
+Objective
+---------
+
+By the end of this lesson you will know:
+
+1.  What Validation Rules are
+2.  Formula basics
+3.  Validation syntax
+4.  Error messages
+5.  Real business scenarios
+
+* * * * *
+
+1\. What is a Validation Rule?
+==============================
+
+Validation Rule = Business rule that prevents invalid data from being saved.
+
+Think:
+
+```
+User enters data
+  ↓
+Validation executes
+  ↓
+Pass → Save
+Fail → Error
+```
+
+Example:
+
+Rule:
+
+```
+Experience cannot be negative
+```
+
+Input:
+
+```
+-5
+```
+
+Result:
+
+❌ Save blocked
+
+* * * * *
+
+2\. Validation Rule Components
+==============================
+
+Every validation contains:
+
+```
+Formula
++
+Error Message
++
+Error Location
+```
+
+Example:
+
+Formula:
+
+```
+Experience__c < 0
+```
+
+Message:
+
+```
+Experience cannot be negative
+```
+
+* * * * *
+
+3\. Common Operators
+====================
+
+| Operator | Meaning |
+| --- | --- |
+| = | Equal |
+| <> | Not Equal |
+| > | Greater |
+| < | Less |
+| && | AND |
+| || | OR |
+
+Functions:
+
+| Function | Purpose |
+| --- | --- |
+| ISBLANK() | Empty |
+| ISPICKVAL() | Picklist |
+| TODAY() | Current Date |
+| LEN() | Length |
+
+* * * * *
+
+4\. Build Validation Rules for Our Project
+==========================================
+
+Rule 1 --- Experience cannot be negative
+--------------------------------------
+
+Formula:
+
+```
+Experience__c < 0
+```
+
+Error:
+
+```
+Experience cannot be less than zero.
+```
+
+* * * * *
+
+Rule 2 --- Enrollment Date cannot be future
+-----------------------------------------
+
+Formula:
+
+```
+Enrollment_Date__c > TODAY()
+```
+
+Error:
+
+```
+Enrollment date cannot be future date.
+```
+
+* * * * *
+
+Rule 3 --- Certification required
+-------------------------------
+
+Business rule:
+
+If Status = Completed
+
+then Certification Required = TRUE
+
+Formula concept:
+
+```
+AND(...)
+```
+
+(You design this one.)
+
+For **Rule 3 --- Certification Required**
+
+Business Rule:
+
+> If **Status = Completed**, then **Certification Required = TRUE**
+
+Assuming:
+
+-   `Status__c` → Picklist
+-   `Certification_Required__c` → Checkbox
+
+Validation Rule Formula:
+
+```
+AND(ISPICKVAL(Status__c, "Completed"),NOT(Certification_Required__c))
+```
+
+Error Message:
+
+```
+Certification is required when status is Completed.
+```
+
+Error Location:
+
+```
+Field → Certification Required
+```
+
+How it works:
+
+-   Status = **Completed**
+-   Certification Required = **Unchecked (FALSE)**
+
+→ ❌ Record cannot be saved
+
+Example:
+
+| Status | Certification Required | Result |
+| --- | --- | --- |
+| Completed | TRUE | ✅ Save |
+| Completed | FALSE | ❌ Error |
+| In Progress | FALSE | ✅ Save |
+
+This ensures completed enrollments always have certification marked. ✅
+
+Assignment
+==========
+
+Answer:
+
+### Q1. What is a Validation Rule?
+
+### Q2. If Experience should not exceed 40 years, write formula logic.
+
+### Q3. Which function checks Picklist values?
+
+### Q4. Write formula logic:\ Enrollment Date should not be blank.
+
+### Q5. Business Rule: If Course Cost > 0, Category cannot be blank. Write formula logic (pseudo formula is fine).
+
+*******
+
+### Q1. What is a Validation Rule?
+
+A **Validation Rule** is a business rule in Salesforce that prevents users from saving invalid or incorrect data.
+
+Flow:
+
+```
+User enters data
+  ↓
+Validation Rule executes
+  ↓
+Pass → Save
+Fail → Show Error
+```
+
+Example:\
+Experience cannot be negative.
+
+* * * * *
+
+### Q2. If Experience should not exceed 40 years, write formula logic.
+
+Formula:
+
+```
+Experience__c > 40
+```
+
+Error Message:
+
+```
+Experience cannot exceed 40 years.
+```
+
+* * * * *
+
+### Q3. Which function checks Picklist values?
+
+Use:
+
+```
+ISPICKVAL()
+```
+
+Example:
+
+```
+ISPICKVAL(Status__c, "Completed")
+```
+
+This checks whether the picklist value equals **Completed**.
+
+* * * * *
+
+### Q4. Write formula logic: Enrollment Date should not be blank.
+
+Formula:
+
+```
+ISBLANK(Enrollment_Date__c)
+```
+
+Error Message:
+
+```
+Enrollment Date is required.
+```
+
+* * * * *
+
+### Q5. Business Rule: If Course Cost > 0, Category cannot be blank. Formula logic:
+
+```
+AND(Cost__c > 0,ISBLANK(TEXT(Category__c)))
+```
+
+Error Message:
+
+```
+Category is required when Course Cost is greater than zero.
+```
+
+Explanation:
+
+-   `Cost__c > 0` → Course has a price
+-   `ISBLANK(TEXT(Category__c))` → Category is empty
+-   `AND()` → Both conditions true → ❌ Block save
+
+Nice progress --- Validation Rules are one of the most important Salesforce Admin skills. ✅
+
 
