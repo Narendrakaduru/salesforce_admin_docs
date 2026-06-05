@@ -9,24 +9,24 @@
 
 | # | Lesson | Topic Area | File |
 |---|--------|-----------|------|
-| 01 | Introduction to Salesforce and CRM | Foundation | [Lesson-01](./Lesson-01_Introduction_to_Salesforce_and_CRM.md) |
-| 02 | Salesforce Architecture & Multi-Tenant Model | Foundation | [Lesson-02](./Lesson-02_Salesforce_Architecture_and_Multi_Tenant_Model.md) |
-| 03 | Salesforce Navigation & Setup | Foundation | [Lesson-03](./Lesson-03_Salesforce_Navigation_and_Setup.md) |
-| 04 | Objects, Fields & Relationships | Data Model | [Lesson-04](./Lesson-04_Objects_Fields_and_Relationships.md) |
-| 05 | Create Objects & Fields (Hands-On) | Data Model | [Lesson-05](./Lesson-05_Create_Objects_and_Fields_Hands_On.md) |
-| 06 | Formula Fields & Roll-Up Summary | Data Model | [Lesson-06](./Lesson-06_Formula_Fields_and_Roll_Up_Summary.md) |
-| 07 | Validation Rules | Data Model | [Lesson-07](./Lesson-07_Validation_Rules.md) |
-| 08 | Salesforce Security Model | Security | [Lesson-08](./Lesson-08_Salesforce_Security_Model.md) |
-| 09 | User Management, Licenses & Access | Security | [Lesson-09](./Lesson-09_User_Management_Licenses_and_Access.md) |
-| 10 | Advanced Security Operations | Security | [Lesson-10](./Lesson-10_Advanced_Security_Operations.md) |
-| 11 | Salesforce Flow Builder | Automation | [Lesson-11](./Lesson-11_Salesforce_Flow_Builder.md) |
-| 12 | Approval Processes | Automation | [Lesson-12](./Lesson-12_Approval_Processes.md) |
-| 13 | Reports & Dashboards | Analytics | [Lesson-13](./Lesson-13_Reports_and_Dashboards.md) |
-| 14 | Sales Cloud & Service Cloud | Cloud Products | [Lesson-14](./Lesson-14_Sales_Cloud_and_Service_Cloud.md) |
-| 15 | UI & Productivity | Customization | [Lesson-15](./Lesson-15_UI_and_Productivity.md) |
-| 16 | Data Management | Data Ops | [Lesson-16](./Lesson-16_Data_Management.md) |
-| 17 | Deployment, Sandbox & Change Sets | Release Mgmt | [Lesson-17](./Lesson-17_Deployment_Sandbox_and_Change_Sets.md) |
-| 18 | Salesforce DevOps Basics | DevOps | [Lesson-18](./Lesson-18_Salesforce_DevOps_Basics.md) |
+| 01 | Introduction to Salesforce and CRM | Foundation | [Lesson-01](./Lessons/Lesson-01_Introduction_to_Salesforce_and_CRM.md) |
+| 02 | Salesforce Architecture & Multi-Tenant Model | Foundation | [Lesson-02](./Lessons/Lesson-02_Salesforce_Architecture_and_Multi_Tenant_Model.md) |
+| 03 | Salesforce Navigation & Setup | Foundation | [Lesson-03](./Lessons/Lesson-03_Salesforce_Navigation_and_Setup.md) |
+| 04 | Objects, Fields & Relationships | Data Model | [Lesson-04](./Lessons/Lesson-04_Objects_Fields_and_Relationships.md) |
+| 05 | Create Objects & Fields (Hands-On) | Data Model | [Lesson-05](./Lessons/Lesson-05_Create_Objects_and_Fields_Hands_On.md) |
+| 06 | Formula Fields & Roll-Up Summary | Data Model | [Lesson-06](./Lessons/Lesson-06_Formula_Fields_and_Roll_Up_Summary.md) |
+| 07 | Validation Rules | Data Model | [Lesson-07](./Lessons/Lesson-07_Validation_Rules.md) |
+| 08 | Salesforce Security Model | Security | [Lesson-08](./Lessons/Lesson-08_Salesforce_Security_Model.md) |
+| 09 | User Management, Licenses & Access | Security | [Lesson-09](./Lessons/Lesson-09_User_Management_Licenses_and_Access.md) |
+| 10 | Advanced Security Operations | Security | [Lesson-10](./Lessons/Lesson-10_Advanced_Security_Operations.md) |
+| 11 | Salesforce Flow Builder | Automation | [Lesson-11](./Lessons/Lesson-11_Salesforce_Flow_Builder.md) |
+| 12 | Approval Processes | Automation | [Lesson-12](./Lessons/Lesson-12_Approval_Processes.md) |
+| 13 | Reports & Dashboards | Analytics | [Lesson-13](./Lessons/Lesson-13_Reports_and_Dashboards.md) |
+| 14 | Sales Cloud & Service Cloud | Cloud Products | [Lesson-14](./Lessons/Lesson-14_Sales_Cloud_and_Service_Cloud.md) |
+| 15 | UI & Productivity | Customization | [Lesson-15](./Lessons/Lesson-15_UI_and_Productivity.md) |
+| 16 | Data Management | Data Ops | [Lesson-16](./Lessons/Lesson-16_Data_Management.md) |
+| 17 | Deployment, Sandbox & Change Sets | Release Mgmt | [Lesson-17](./Lessons/Lesson-17_Deployment_Sandbox_and_Change_Sets.md) |
+| 18 | Salesforce DevOps Basics | DevOps | [Lesson-18](./Lessons/Lesson-18_Salesforce_DevOps_Basics.md) |
 
 ---
 
