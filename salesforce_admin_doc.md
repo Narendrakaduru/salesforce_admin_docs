@@ -1,10 +1,20 @@
 <h1 align="center">Salesforce Admin Learning Doc</h1>
 
-Lesson 1 --- Introduction to Salesforce and CRM
-=======================================================
+## Lesson 1 — Introduction to Salesforce and CRM
 
-1\. What is Salesforce?
-=======================
+### Objective
+
+By the end of this lesson you should understand:
+
+1. What Salesforce is
+2. What CRM is
+3. Real business use cases
+4. The Salesforce ecosystem
+5. Core Salesforce concepts
+
+---
+
+### 1. What is Salesforce?
 
 Salesforce is a **cloud-based Customer Relationship Management (CRM) platform**.
 
@@ -12,13 +22,13 @@ Simple meaning:
 
 Companies use Salesforce to manage:
 
--   Customers
--   Sales
--   Employees
--   Support tickets
--   Marketing
--   Business workflows
--   Reporting
+- Customers
+- Sales
+- Employees
+- Support tickets
+- Marketing
+- Business workflows
+- Reporting
 
 Think of Salesforce as:
 
@@ -46,18 +56,19 @@ Customer → Lead → Opportunity → Sale → Support
 
 Everything stays connected.
 
-2\. What is CRM?
-================
+---
+
+### 2. What is CRM?
 
 CRM = **Customer Relationship Management**
 
 CRM helps companies:
 
--   Store customer details
--   Track communication
--   Manage sales
--   Improve customer satisfaction
--   Automate business processes
+- Store customer details
+- Track communication
+- Manage sales
+- Improve customer satisfaction
+- Automate business processes
 
 Example:
 
@@ -81,8 +92,9 @@ Support team handles issues
 
 Salesforce manages this complete lifecycle.
 
-3\. Real Business Example
-=========================
+---
+
+### 3. Real Business Example
 
 Company:\
 **VisionsDream Cloud**
@@ -99,48 +111,50 @@ Current problems:
 
 Business outcome:
 
--   Faster sales
--   Better reporting
--   Centralized data
+- Faster sales
+- Better reporting
+- Centralized data
 
-4\. Salesforce Ecosystem
-========================
+---
+
+### 4. Salesforce Ecosystem
 
 Salesforce provides multiple clouds.
 
-### Sales Cloud
+#### Sales Cloud
 
 Manage:
 
--   Leads
--   Accounts
--   Opportunities
+- Leads
+- Accounts
+- Opportunities
 
-### Service Cloud
+#### Service Cloud
 
 Manage:
 
--   Cases
--   Support
+- Cases
+- Support
 
-### Experience Cloud
+#### Experience Cloud
 
 Customer portals
 
-### Marketing Cloud
+#### Marketing Cloud
 
 Marketing automation
 
-### Commerce Cloud
+#### Commerce Cloud
 
 Online commerce
 
-### Platform
+#### Platform
 
 Custom application development
 
-5\. Core Salesforce Concepts
-============================
+---
+
+### 5. Core Salesforce Concepts
 
 You will hear these every day:
 
@@ -157,14 +171,15 @@ You will hear these every day:
 Example:
 
 ```
-Employee Object 
-├── Name 
-├── Email 
+Employee Object
+├── Name
+├── Email
 └── Skill
 ```
 
-Mini Project
-=============
+---
+
+### Mini Project
 
 Project:\
 **Employee Learning & Certification Management System**
@@ -173,10 +188,10 @@ Requirement:
 
 Employees should:
 
--   Register
--   Select skills
--   Enroll in courses
--   Track certification status
+- Register
+- Select skills
+- Enroll in courses
+- Track certification status
 
 Question:
 
@@ -186,13 +201,14 @@ Example:
 
 ```
 Employee
-Course 
+Course
 Enrollment
 Certification
 ```
 
-Hands-on Activity
-=================
+---
+
+### Hands-On Activity
 
 Create a free Salesforce Developer Org.
 
@@ -201,35 +217,31 @@ Go to:\
 
 Steps:
 
-1.  Sign up
-2.  Login
-3.  Open App Launcher
-4.  Open Setup
-5.  Explore homepage
+1. Sign up
+2. Login
+3. Open App Launcher
+4. Open Setup
+5. Explore homepage
 
 Do not configure anything yet.
 
-Knowledge Check
-===============
+---
 
-### Q1. What does CRM stand for?
+### Knowledge Check
 
-### Q2. What is Salesforce?
+#### Q1. What does CRM stand for?
 
-### Q3. Difference between Object and Record?
+Customer Relationship Management
 
-### Q4. Give one real-world use case of Salesforce.
+#### Q2. What is Salesforce?
 
-### Q5. For our project, suggest at least 4 objects.
+Salesforce is a cloud-based CRM platform used to manage customer relationships, business processes, automation, reporting, and enterprise applications.
 
-1. Customer Relationship Management
+#### Q3. Difference between Object and Record?
 
-2. Salesforce is a cloud-based CRM platform used to manage customer relationships, business processes, automation, reporting, and enterprise applications.
-
-3. 
--   **Object → Table**
--   **Record → Single entry inside the table**
--   **Field → Column**
+- **Object → Table**
+- **Record → Single entry inside the table**
+- **Field → Column**
 
 Example:
 
@@ -243,40 +255,47 @@ ID   Name      Skill
 Object → Employee\
 Record → Employee #1
 
-4. A company tracks customer inquiries, converts them into sales opportunities, and automates follow-ups using Salesforce.
+#### Q4. Give one real-world use case of Salesforce.
 
-5. Employee, Course, Enrollment, Certification
+A company tracks customer inquiries, converts them into sales opportunities, and automates follow-ups using Salesforce.
 
-Lesson 2 --- Salesforce Architecture & Multi-Tenant Model
-=======================================================
+#### Q5. For our project, suggest at least 4 objects.
 
-Objective
----------
+Employee, Course, Enrollment, Certification
+
+---
+
+## Lesson 2 — Salesforce Architecture & Multi-Tenant Model
+
+### Objective
 
 By the end of this lesson you should understand:
 
-1.  What a Salesforce Org is
-2.  Cloud architecture
-3.  Multi-tenant architecture
-4.  Metadata-driven platform
-5.  Sandbox vs Production
-6.  Why Salesforce scales
+1. What a Salesforce Org is
+2. Cloud architecture
+3. Multi-tenant architecture
+4. Metadata-driven platform
+5. Sandbox vs Production
+6. Why Salesforce scales
 
-1\. What is Salesforce Architecture?
-------------------------------------
+---
+
+### 1. What is Salesforce Architecture?
 
 Architecture = How Salesforce works internally.
 
 High-level:
 
 ```
-Users 
+Users
 ↓
-UI (Lightning Experience) 
+UI (Lightning Experience)
 ↓
-Business Logic 
+Business Logic
 ↓
-Database ↓Infrastructure (Cloud)
+Database
+↓
+Infrastructure (Cloud)
 ```
 
 Unlike traditional apps:
@@ -291,20 +310,21 @@ Salesforce handles all that.
 
 You configure.
 
-2\. What is an Org?
--------------------
+---
+
+### 2. What is an Org?
 
 **Org (Organization)** = Your Salesforce environment.
 
 Think:
 
 ```
-Company 
-└── Salesforce Org      
-  ├── Users      
-  ├── Data      
-  ├── Security      
-  └── Apps
+Company
+└── Salesforce Org
+    ├── Users
+    ├── Data
+    ├── Security
+    └── Apps
 ```
 
 Example:
@@ -317,8 +337,9 @@ Employee Learning System
 
 That entire application lives inside one Org.
 
-3\. Multi-Tenant Architecture (Very Important)
-----------------------------------------------
+---
+
+### 3. Multi-Tenant Architecture (Very Important)
 
 Salesforce serves many customers using shared infrastructure.
 
@@ -332,34 +353,35 @@ One building → many apartments.
 
 Each apartment:
 
--   Private
--   Secure
--   Independent
+- Private
+- Secure
+- Independent
 
 Salesforce:
 
 ```
-Shared Servers 
-├── Company A 
-├── Company B 
+Shared Servers
+├── Company A
+├── Company B
 └── Company C
 ```
 
 Each company:
 
--   Separate data
--   Separate users
--   Separate configurations
+- Separate data
+- Separate users
+- Separate configurations
 
 Benefits:
 
--   Lower cost
--   Automatic upgrades
--   High availability
--   Easy scaling
+- Lower cost
+- Automatic upgrades
+- High availability
+- Easy scaling
 
-4\. Metadata-Driven Architecture
---------------------------------
+---
+
+### 4. Metadata-Driven Architecture
 
 Salesforce mostly stores configuration as **metadata**.
 
@@ -392,94 +414,83 @@ That entry = Data
 
 This becomes very important later.
 
-5\. Production vs Sandbox
--------------------------
+---
 
-### Production
+### 5. Production vs Sandbox
+
+#### Production
 
 Real environment.
 
 Contains:
 
--   Actual users
--   Actual business data
+- Actual users
+- Actual business data
 
-### Sandbox
+#### Sandbox
 
 Testing environment.
 
 Used for:
 
--   Development
--   QA
--   Training
+- Development
+- QA
+- Training
 
 Rule:
 
 > Never experiment directly in Production.
 
-Mini Project Thinking
-=====================
+---
+
+### Mini Project
 
 For our Learning System:
 
 Environment plan:
 
 ```
-Sandbox 
+Sandbox
 ↓
-Testing 
+Testing
 ↓
 Production
 ```
 
-Assignment
-==========
+---
 
-Answer these:
+### Assignment
 
-### Q1. What is an Org?
-
-### Q2. Explain Multi-Tenant Architecture in your own words.
-
-### Q3. Difference between Data and Metadata?
-
-### Q4. Should admins directly build in Production? Why?
-
-### Q5. Example:\ You create a Custom Object called Employee. Is it Data or Metadata?
-
-----------------------------------------------
-
-### Q1. What is an Org?
+#### Q1. What is an Org?
 
 An **Org (Organization)** in Salesforce is a dedicated environment or workspace where a company stores and manages its Salesforce data, users, applications, security settings, and configurations.
 
 Example:\
 If a company uses Salesforce to manage customers and employees, all their records, objects, reports, and settings exist inside their Salesforce Org.
 
-* * * * *
+---
 
-### Q2. Explain Multi-Tenant Architecture in your own words.
+#### Q2. Explain Multi-Tenant Architecture in your own words.
 
 **Multi-Tenant Architecture** means multiple companies share the same Salesforce infrastructure (servers, platform, and resources), but each company's data remains completely isolated and secure.
 
 Example:\
 Think of an apartment building:
 
--   The building = Salesforce Platform
--   Apartments = Different company Orgs
--   Each family uses the same building but has private rooms and belongings.
+- The building = Salesforce Platform
+- Apartments = Different company Orgs
+- Each family uses the same building but has private rooms and belongings.
 
 Benefits:
 
--   Lower infrastructure cost
--   Automatic updates
--   High scalability
--   Secure data separation
+- Lower infrastructure cost
+- Automatic updates
+- High scalability
+- Secure data separation
 
-* * * * *
+---
 
-### Q3. Difference between Data and Metadata?
+#### Q3. Difference between Data and Metadata?
 
 | Data | Metadata |
 | --- | --- |
@@ -490,63 +501,64 @@ Benefits:
 
 Example:
 
--   Employee Name = Narendra → **Data**
--   Employee Object with fields → **Metadata**
+- Employee Name = Narendra → **Data**
+- Employee Object with fields → **Metadata**
 
-* * * * *
+---
 
-### Q4. Should admins directly build in Production? Why?
+#### Q4. Should admins directly build in Production? Why?
 
 **No, admins should not directly build in Production.**
 
 Reason:
 
-1.  Risk of affecting live users
-2.  Can introduce errors into business processes
-3.  Difficult to test safely
-4.  Best practice is to use **Sandbox → Test → Deploy to Production**
+1. Risk of affecting live users
+2. Can introduce errors into business processes
+3. Difficult to test safely
+4. Best practice is to use **Sandbox → Test → Deploy to Production**
 
 Typical flow:\
 Development Sandbox → Testing → UAT → Production
 
-* * * * *
+---
 
-### Q5. Example: You create a Custom Object called Employee. Is it Data or Metadata?
+#### Q5. You create a Custom Object called Employee. Is it Data or Metadata?
 
 Creating a **Custom Object called Employee** is **Metadata**.
 
 Reason:
 
--   You are creating the structure/schema.
--   The actual Employee records stored later become **Data**.
+- You are creating the structure/schema.
+- The actual Employee records stored later become **Data**.
 
 Example:
 
--   Employee Object → Metadata ✅
--   Employee Record (Narendra, DevOps Engineer) → Data ✅
+- Employee Object → Metadata ✅
+- Employee Record (Narendra, DevOps Engineer) → Data ✅
 
 **Quick Memory Trick:**\
 **Structure = Metadata**\
 **Stored Information = Data**
 
-Lesson 3 --- Salesforce Navigation & Setup
-========================================
+---
 
-Objective
----------
+## Lesson 3 — Salesforce Navigation & Setup
+
+### Objective
 
 By the end of this lesson you will understand:
 
-1.  Lightning Experience
-2.  App Launcher
-3.  Setup Menu
-4.  Object Manager
-5.  Tabs and Apps
-6.  Search in Setup
-7.  Admin daily workflow
+1. Lightning Experience
+2. App Launcher
+3. Setup Menu
+4. Object Manager
+5. Tabs and Apps
+6. Search in Setup
+7. Admin daily workflow
 
-1\. What is Lightning Experience?
----------------------------------
+---
+
+### 1. What is Lightning Experience?
 
 Lightning Experience is Salesforce's modern UI.
 
@@ -572,8 +584,9 @@ Global Search
 User Profile
 ```
 
-2\. App Launcher (Very Important)
----------------------------------
+---
+
+### 2. App Launcher (Very Important)
 
 App Launcher lets users switch between applications.
 
@@ -607,8 +620,9 @@ Enrollments
 Certifications
 ```
 
-3\. Setup Menu (Admin Home)
----------------------------
+---
+
+### 3. Setup Menu (Admin Home)
 
 This is the Admin control center.
 
@@ -630,16 +644,17 @@ Common admin areas:
 | Profiles | Security |
 | Reports | Analytics |
 
-4\. Object Manager
-------------------
+---
+
+### 4. Object Manager
 
 This is where Admins create and manage:
 
--   Objects
--   Fields
--   Validation Rules
--   Record Types
--   Page Layouts
+- Objects
+- Fields
+- Validation Rules
+- Record Types
+- Page Layouts
 
 Example:
 
@@ -651,10 +666,11 @@ Employee
 Fields & Relationships
 ```
 
-5\. Tabs vs Apps
-----------------
+---
 
-### Tab
+### 5. Tabs vs Apps
+
+#### Tab
 
 Shortcut to an Object.
 
@@ -665,21 +681,22 @@ Employee Tab
 Course Tab
 ```
 
-### App
+#### App
 
 Collection of Tabs.
 
 Example:
 
 ```
-Learning App 
-├── Employees 
-├── Courses 
+Learning App
+├── Employees
+├── Courses
 └── Certification
 ```
 
-6\. Setup Search (Your Best Friend)
------------------------------------
+---
+
+### 6. Setup Search (Your Best Friend)
 
 Top left search inside Setup.
 
@@ -696,24 +713,28 @@ Permission Sets
 
 Admins use this constantly.
 
-### Q1. What is Lightning Experience?
+---
+
+### Knowledge Check
+
+#### Q1. What is Lightning Experience?
 
 **Lightning Experience** is the modern user interface of Salesforce that provides an improved, faster, and more user-friendly experience for working with Salesforce applications.
 
 Features:
 
--   Modern responsive UI
--   Better navigation
--   Dashboards and reports
--   Productivity tools
--   Component-based customization
+- Modern responsive UI
+- Better navigation
+- Dashboards and reports
+- Productivity tools
+- Component-based customization
 
 Example:\
 When users log into Salesforce and see the modern dashboard layout with navigation menus and apps, they are using Lightning Experience.
 
-* * * * *
+---
 
-### Q2. Difference between App and Tab?
+#### Q2. Difference between App and Tab?
 
 | App | Tab |
 | --- | --- |
@@ -724,12 +745,12 @@ When users log into Salesforce and see the modern dashboard layout with navigati
 
 Example:
 
--   One App → Employee, Course, Enrollment Tabs
--   Each Tab → Opens one object/page
+- One App → Employee, Course, Enrollment Tabs
+- Each Tab → Opens one object/page
 
-* * * * *
+---
 
-### Q3. Where do admins usually configure objects and fields?
+#### Q3. Where do admins usually configure objects and fields?
 
 Admins usually configure objects and fields in:
 
@@ -737,35 +758,35 @@ Admins usually configure objects and fields in:
 
 Inside Object Manager, admins can:
 
--   Create Custom Objects
--   Create Fields
--   Manage Relationships
--   Configure Validation Rules
--   Customize Page Layouts
+- Create Custom Objects
+- Create Fields
+- Manage Relationships
+- Configure Validation Rules
+- Customize Page Layouts
 
-* * * * *
+---
 
-### Q4. What is App Launcher used for?
+#### Q4. What is App Launcher used for?
 
 **App Launcher** is used to quickly access and switch between different Salesforce Apps and available items.
 
 Functions:
 
--   Open different Apps
--   Search apps
--   Access objects and tools
--   Navigate quickly
+- Open different Apps
+- Search apps
+- Access objects and tools
+- Navigate quickly
 
 Example:\
 Switch from Sales App → Service App → Learning Management App.
 
-* * * * *
+---
 
-### Q5. If you create a Learning Management App containing Employee and Course tabs, what is App and what are Tabs?
+#### Q5. If you create a Learning Management App containing Employee and Course tabs, what is App and what are Tabs?
 
--   **Learning Management** → **App**
--   **Employee** → **Tab**
--   **Course** → **Tab**
+- **Learning Management** → **App**
+- **Employee** → **Tab**
+- **Course** → **Tab**
 
 Explanation:\
 The App acts as a container, and Tabs are the navigation items inside it.
@@ -780,25 +801,26 @@ Learning Management (App)\
 **App = Folder**\
 **Tabs = Files inside the folder**
 
-Lesson 4 --- Objects, Fields & Relationships (Core Salesforce Admin Topic)
-========================================================================
+---
 
-This is one of the most important lessons in Salesforce.
+## Lesson 4 — Objects, Fields & Relationships (Core Salesforce Admin Topic)
 
-Objective
----------
+> This is one of the most important lessons in Salesforce.
+
+### Objective
 
 By the end of this lesson you will understand:
 
-1.  Standard Objects
-2.  Custom Objects
-3.  Fields and Data Types
-4.  Relationships
-5.  Schema Thinking
-6.  Real Project Data Model
+1. Standard Objects
+2. Custom Objects
+3. Fields and Data Types
+4. Relationships
+5. Schema Thinking
+6. Real Project Data Model
 
-1\. What is an Object?
-======================
+---
+
+### 1. What is an Object?
 
 Object = Database Table.
 
@@ -819,21 +841,21 @@ Employee
 102 | Rahul
 ```
 
-2\. Types of Objects
-====================
+---
 
-Standard Object
----------------
+### 2. Types of Objects
+
+#### Standard Object
 
 Prebuilt by Salesforce.
 
 Examples:
 
--   Account
--   Contact
--   Lead
--   Opportunity
--   Case
+- Account
+- Contact
+- Lead
+- Opportunity
+- Case
 
 Example:
 
@@ -844,10 +866,9 @@ Amazon
 Microsoft
 ```
 
-* * * * *
+---
 
-Custom Object
--------------
+#### Custom Object
 
 Created by Admins.
 
@@ -861,8 +882,9 @@ Certification__c
 
 (`__c` means Custom)
 
-3\. Fields (Columns)
-====================
+---
+
+### 3. Fields (Columns)
 
 Fields store values.
 
@@ -877,10 +899,7 @@ Skill
 Experience
 ```
 
-* * * * *
-
-Common Field Types
-------------------
+#### Common Field Types
 
 | Field Type | Example |
 | --- | --- |
@@ -893,8 +912,6 @@ Common Field Types
 | Formula | Auto Calculate |
 | Lookup | Connect Objects |
 
-* * * * *
-
 Example:
 
 ```
@@ -906,15 +923,13 @@ Category
 Price
 ```
 
-4\. Relationships (Very Important)
-==================================
+---
+
+### 4. Relationships (Very Important)
 
 Relationships connect Objects.
 
-* * * * *
-
-Lookup Relationship
--------------------
+#### Lookup Relationship
 
 Loose connection.
 
@@ -930,10 +945,9 @@ Delete Manager?
 
 Employee still exists.
 
-* * * * *
+---
 
-Master-Detail Relationship
---------------------------
+#### Master-Detail Relationship
 
 Strong Parent → Child.
 
@@ -951,11 +965,12 @@ Enrollment deleted automatically.
 
 Features:
 
--   Inherits security
--   Supports Roll-Up Summary
+- Inherits security
+- Supports Roll-Up Summary
 
-Many-to-Many
-------------
+---
+
+#### Many-to-Many
 
 Implemented using Junction Object.
 
@@ -964,14 +979,17 @@ Example:
 ```
 Employee
  ↓
-Enrollment↓Course
+Enrollment
+ ↓
+Course
 ```
 
 One employee → many courses\
 One course → many employees
 
-5\. Project Design
-==================
+---
+
+### 5. Project Design
 
 Our project:
 
@@ -993,8 +1011,9 @@ Possible relationships:
 | Course → Enrollment | Master |
 | Employee → Certification | Lookup |
 
-Mini Scenario
-=============
+---
+
+### Mini Scenario
 
 Company requirement:
 
@@ -1004,22 +1023,22 @@ Question:
 
 Should you use:
 
--   Lookup?
--   Master Detail?
--   Junction Object?
+- Lookup?
+- Master Detail?
+- Junction Object?
 
-### Requirement:
+**Requirement:**
 
 > Employees can enroll into many courses.
 
 Interpretation:
 
--   One Employee → Many Courses
--   One Course → Many Employees
+- One Employee → Many Courses
+- One Course → Many Employees
 
 This is a **Many-to-Many relationship**.
 
-### Correct Answer: **Junction Object ✅**
+**Correct Answer: Junction Object ✅**
 
 Why?\
 Salesforce does not directly support Many-to-Many relationships between two objects.
@@ -1027,11 +1046,11 @@ Salesforce does not directly support Many-to-Many relationships between two obje
 We create:
 
 ```
-Employee (Object)      
-   ↑      
+Employee (Object)
+   ↑
    |
-Enrollment (Junction Object)      
-   |      
+Enrollment (Junction Object)
+   |
    ↓
 Course (Object)
 ```
@@ -1040,20 +1059,20 @@ Course (Object)
 
 Inside Enrollment:
 
--   Employee → Master-Detail relationship
--   Course → Master-Detail relationship
+- Employee → Master-Detail relationship
+- Course → Master-Detail relationship
 
 Example:
 
 Employee:
 
--   Narendra
--   Ravi
+- Narendra
+- Ravi
 
 Course:
 
--   Salesforce Admin
--   DevOps
+- Salesforce Admin
+- DevOps
 
 Enrollment Records:
 
@@ -1065,24 +1084,28 @@ Enrollment Records:
 
 This allows:
 
--   One Employee → multiple Courses
--   One Course → multiple Employees
+- One Employee → multiple Courses
+- One Course → multiple Employees
 
-### Why not Lookup?
+**Why not Lookup?**
 
 Lookup supports loose relationships and doesn't automatically create a true many-to-many model.
 
-### Why not only Master-Detail?
+**Why not only Master-Detail?**
 
 A single Master-Detail alone creates **One-to-Many**, not Many-to-Many.
 
-### Final Design:
+**Final Design:**
 
--   Employee ← Master-Detail → Enrollment ← Master-Detail → Course
+- Employee ← Master-Detail → Enrollment ← Master-Detail → Course
 
 **Answer: Junction Object (Enrollment) using two Master-Detail relationships.**
 
-### Q1. Difference between Standard Object and Custom Object?
+---
+
+### Knowledge Check
+
+#### Q1. Difference between Standard Object and Custom Object?
 
 | Standard Object | Custom Object |
 | --- | --- |
@@ -1093,20 +1116,20 @@ A single Master-Detail alone creates **One-to-Many**, not Many-to-Many.
 
 Example:
 
--   Customer details → Standard Object
--   Employee Management → Custom Object
+- Customer details → Standard Object
+- Employee Management → Custom Object
 
-* * * * *
+---
 
-### Q2. What is a Field?
+#### Q2. What is a Field?
 
 A **Field** is a place inside an object where individual pieces of information are stored.
 
 Think:
 
--   Object → Table
--   Field → Column
--   Record → Row
+- Object → Table
+- Field → Column
+- Record → Row
 
 Example:
 
@@ -1117,13 +1140,13 @@ Employee Object:
 
 Here:
 
--   Employee Name → Field
--   Email → Field
--   Department → Field
+- Employee Name → Field
+- Email → Field
+- Department → Field
 
-* * * * *
+---
 
-### Q3. Difference between Lookup and Master-Detail?
+#### Q3. Difference between Lookup and Master-Detail?
 
 | Lookup Relationship | Master-Detail Relationship |
 | --- | --- |
@@ -1135,12 +1158,12 @@ Here:
 
 Example:
 
--   Employee → Manager → Lookup
--   Course → Enrollment → Master-Detail
+- Employee → Manager → Lookup
+- Course → Enrollment → Master-Detail
 
-* * * * *
+---
 
-### Q4. What relationship supports Roll-Up Summary?
+#### Q4. What relationship supports Roll-Up Summary?
 
 ✅ **Master-Detail Relationship**
 
@@ -1149,38 +1172,38 @@ Roll-Up Summary fields calculate values from child records.
 
 Examples:
 
--   Count enrollments
--   Sum total course hours
--   Maximum score
--   Minimum price
+- Count enrollments
+- Sum total course hours
+- Maximum score
+- Minimum price
 
 Lookup relationships do not support Roll-Up Summary directly.
 
-* * * * *
+---
 
-### Q5. Employee can enroll into many courses and one course has many employees. Which relationship design would you choose and why?
+#### Q5. Employee can enroll into many courses and one course has many employees. Which relationship design would you choose and why?
 
 ✅ **Junction Object (Many-to-Many Relationship)**
 
 Design:
 
 ```
-Employee   
+Employee
    ↑
-Master-Detail   
+Master-Detail
    |
-Enrollment (Junction Object)   
+Enrollment (Junction Object)
    |
-Master-Detail   
+Master-Detail
    ↓
 Course
 ```
 
 Why:
 
--   One Employee → Many Courses
--   One Course → Many Employees
--   Salesforce supports this using a Junction Object with **two Master-Detail relationships**.
+- One Employee → Many Courses
+- One Course → Many Employees
+- Salesforce supports this using a Junction Object with **two Master-Detail relationships**.
 
 Example:
 
@@ -1194,17 +1217,17 @@ This design also allows Roll-Up Summaries and strong relationship control.
 
 **Quick Memory Trick:**
 
--   Lookup → Flexible
--   Master-Detail → Parent controls Child
--   Many-to-Many → Junction Object + 2 Master-Details ✅
+- Lookup → Flexible
+- Master-Detail → Parent controls Child
+- Many-to-Many → Junction Object + 2 Master-Details ✅
 
-Lesson 5 --- Create Objects & Fields (Hands-On Admin Work)
-========================================================
+---
 
-Now we start building.
+## Lesson 5 — Create Objects & Fields (Hands-On Admin Work)
 
-Objective
----------
+> Now we start building.
+
+### Objective
 
 Create our first real Salesforce application data model.
 
@@ -1218,10 +1241,9 @@ Enrollment__c
 
 and configure fields.
 
-* * * * *
+---
 
-Step 1 --- Create Employee Object
-===============================
+### Step 1 — Create Employee Object
 
 Go:
 
@@ -1252,10 +1274,9 @@ Click:\
 
 Save.
 
-* * * * *
+---
 
-Step 2 --- Create Fields in Employee
-==================================
+### Step 2 — Create Fields in Employee
 
 Open:
 
@@ -1283,13 +1304,13 @@ Department values:
 DevOps
 Salesforce
 ServiceNow
-CybersecurityCloud
+Cybersecurity
+Cloud
 ```
 
-* * * * *
+---
 
-Step 3 --- Create Course Object
-=============================
+### Step 3 — Create Course Object
 
 Create:
 
@@ -1314,29 +1335,27 @@ Soft Skills
 Leadership
 ```
 
-* * * * *
+---
 
-Step 4 --- Design Enrollment Object
-=================================
+### Step 4 — Design Enrollment Object
 
 Question only (do not create yet):
 
 Enrollment should contain:
 
--   Employee
--   Course
--   Enrollment Date
--   Status
+- Employee
+- Course
+- Enrollment Date
+- Status
 
 Think:\
 Which fields should be:
 
--   Master Detail?
--   Date?
--   Picklist?
+- Master Detail?
+- Date?
+- Picklist?
 
-Step 4 --- Design Enrollment Object (Answer)
-=================================
+**Answer:**
 
 Enrollment should contain these fields:
 
@@ -1349,66 +1368,53 @@ Enrollment should contain these fields:
 
 Suggested **Status** Picklist values:
 
--   Enrolled
--   In Progress
--   Completed
--   Cancelled
+- Enrolled
+- In Progress
+- Completed
+- Cancelled
 
-### Why?
+**Why?**
 
--   **Employee → Master-Detail** → Each enrollment must belong to one employee.
--   **Course → Master-Detail** → Each enrollment must belong to one course.
--   **Enrollment Date → Date** → Stores the date of enrollment.
--   **Status → Picklist** → Restricts users to predefined status values.
+- **Employee → Master-Detail** → Each enrollment must belong to one employee.
+- **Course → Master-Detail** → Each enrollment must belong to one course.
+- **Enrollment Date → Date** → Stores the date of enrollment.
+- **Status → Picklist** → Restricts users to predefined status values.
 
 Relationship design:
 
 ```
-Employee   
+Employee
   ↑
-Master-Detail   
+Master-Detail
   |
-Enrollment   
+Enrollment
   |
-Master-Detail   
+Master-Detail
   ↓
 Course
 ```
 
 This creates a **Many-to-Many relationship**:
 
--   One Employee → Many Courses
--   One Course → Many Employees
+- One Employee → Many Courses
+- One Course → Many Employees
 
 So the **Enrollment object acts as the Junction Object**. ✅
 
-Assignment
-==========
+---
 
-Answer:
+### Assignment
 
-### Q1. Why did we use Auto Number for Employee ID?
-
-### Q2. Which field type would you use for Department and why?
-
-### Q3. If Cost stores ₹ values, which field type should be used?
-
-### Q4. For Enrollment object, define fields and data types.
-
-### Q5. Which relationships should Enrollment contain?
-
-************
-
-### Q1. Why did we use Auto Number for Employee ID?
+#### Q1. Why did we use Auto Number for Employee ID?
 
 We use **Auto Number** for Employee ID because Salesforce automatically generates a **unique identifier** for each employee record.
 
 Benefits:
 
--   No manual entry
--   Prevents duplicate IDs
--   Maintains consistent format
--   Saves admin effort
+- No manual entry
+- Prevents duplicate IDs
+- Maintains consistent format
+- Saves admin effort
 
 Example:
 
@@ -1418,37 +1424,37 @@ EMP-0002
 EMP-0003
 ```
 
-* * * * *
+---
 
-### Q2. Which field type would you use for Department and why?
+#### Q2. Which field type would you use for Department and why?
 
 Use **Picklist**.
 
 Reason:
 
--   Restricts users to predefined values
--   Maintains data consistency
--   Prevents spelling mistakes and duplicates
+- Restricts users to predefined values
+- Maintains data consistency
+- Prevents spelling mistakes and duplicates
 
 Example values:
 
--   DevOps
--   Salesforce
--   ServiceNow
--   Cybersecurity
--   Cloud
+- DevOps
+- Salesforce
+- ServiceNow
+- Cybersecurity
+- Cloud
 
-* * * * *
+---
 
-### Q3. If Cost stores ₹ values, which field type should be used?
+#### Q3. If Cost stores ₹ values, which field type should be used?
 
 Use **Currency** field type.
 
 Reason:
 
--   Designed to store monetary values
--   Supports currency formatting
--   Allows calculations and reporting
+- Designed to store monetary values
+- Supports currency formatting
+- Allows calculations and reporting
 
 Example:
 
@@ -1458,9 +1464,9 @@ Example:
 ₹25,000
 ```
 
-* * * * *
+---
 
-### Q4. For Enrollment object, define fields and data types.
+#### Q4. For Enrollment object, define fields and data types.
 
 | Field | Data Type |
 | --- | --- |
@@ -1471,19 +1477,19 @@ Example:
 
 Suggested Status values:
 
--   Enrolled
--   In Progress
--   Completed
--   Cancelled
+- Enrolled
+- In Progress
+- Completed
+- Cancelled
 
-* * * * *
+---
 
-### Q5. Which relationships should Enrollment contain?
+#### Q5. Which relationships should Enrollment contain?
 
 Enrollment should contain **two Master-Detail relationships**:
 
-1.  **Enrollment → Employee (Master-Detail)**
-2.  **Enrollment → Course (Master-Detail)**
+1. **Enrollment → Employee (Master-Detail)**
+2. **Enrollment → Course (Master-Detail)**
 
 Reason:\
 This creates a **Many-to-Many relationship** using Enrollment as the **Junction Object**.
@@ -1491,40 +1497,39 @@ This creates a **Many-to-Many relationship** using Enrollment as the **Junction 
 Structure:
 
 ```
-Employee   
+Employee
   ↑
 Master-Detail
 Enrollment
-Master-Detail   
+Master-Detail
   ↓
 Course
 ```
 
 This allows:
 
--   One Employee → Multiple Courses
--   One Course → Multiple Employees ✅
+- One Employee → Multiple Courses
+- One Course → Multiple Employees ✅
 
-Lesson 6 --- Validation Rules (One of the Most Important Admin Skills)
-====================================================================
+---
 
-Admins use validation rules to stop bad data.
+## Lesson 6 — Validation Rules (One of the Most Important Admin Skills)
 
-Objective
----------
+> Admins use validation rules to stop bad data.
+
+### Objective
 
 By the end of this lesson you will know:
 
-1.  What Validation Rules are
-2.  Formula basics
-3.  Validation syntax
-4.  Error messages
-5.  Real business scenarios
+1. What Validation Rules are
+2. Formula basics
+3. Validation syntax
+4. Error messages
+5. Real business scenarios
 
-* * * * *
+---
 
-1\. What is a Validation Rule?
-==============================
+### 1. What is a Validation Rule?
 
 Validation Rule = Business rule that prevents invalid data from being saved.
 
@@ -1557,10 +1562,9 @@ Result:
 
 ❌ Save blocked
 
-* * * * *
+---
 
-2\. Validation Rule Components
-==============================
+### 2. Validation Rule Components
 
 Every validation contains:
 
@@ -1586,10 +1590,9 @@ Message:
 Experience cannot be negative
 ```
 
-* * * * *
+---
 
-3\. Common Operators
-====================
+### 3. Common Operators
 
 | Operator | Meaning |
 | --- | --- |
@@ -1598,7 +1601,7 @@ Experience cannot be negative
 | > | Greater |
 | < | Less |
 | && | AND |
-| || | OR |
+| \|\| | OR |
 
 Functions:
 
@@ -1609,13 +1612,11 @@ Functions:
 | TODAY() | Current Date |
 | LEN() | Length |
 
-* * * * *
+---
 
-4\. Build Validation Rules for Our Project
-==========================================
+### 4. Build Validation Rules for Our Project
 
-Rule 1 --- Experience cannot be negative
---------------------------------------
+#### Rule 1 — Experience Cannot Be Negative
 
 Formula:
 
@@ -1629,10 +1630,9 @@ Error:
 Experience cannot be less than zero.
 ```
 
-* * * * *
+---
 
-Rule 2 --- Enrollment Date cannot be future
------------------------------------------
+#### Rule 2 — Enrollment Date Cannot Be Future
 
 Formula:
 
@@ -1646,10 +1646,9 @@ Error:
 Enrollment date cannot be future date.
 ```
 
-* * * * *
+---
 
-Rule 3 --- Certification required
--------------------------------
+#### Rule 3 — Certification Required
 
 Business rule:
 
@@ -1657,24 +1656,10 @@ If Status = Completed
 
 then Certification Required = TRUE
 
-Formula concept:
-
-```
-AND(...)
-```
-
-(You design this one.)
-
-For **Rule 3 --- Certification Required**
-
-Business Rule:
-
-> If **Status = Completed**, then **Certification Required = TRUE**
-
 Assuming:
 
--   `Status__c` → Picklist
--   `Certification_Required__c` → Checkbox
+- `Status__c` → Picklist
+- `Certification_Required__c` → Checkbox
 
 Validation Rule Formula:
 
@@ -1696,8 +1681,8 @@ Field → Certification Required
 
 How it works:
 
--   Status = **Completed**
--   Certification Required = **Unchecked (FALSE)**
+- Status = **Completed**
+- Certification Required = **Unchecked (FALSE)**
 
 → ❌ Record cannot be saved
 
@@ -1711,24 +1696,11 @@ Example:
 
 This ensures completed enrollments always have certification marked. ✅
 
-Assignment
-==========
+---
 
-Answer:
+### Assignment
 
-### Q1. What is a Validation Rule?
-
-### Q2. If Experience should not exceed 40 years, write formula logic.
-
-### Q3. Which function checks Picklist values?
-
-### Q4. Write formula logic:\ Enrollment Date should not be blank.
-
-### Q5. Business Rule: If Course Cost > 0, Category cannot be blank. Write formula logic (pseudo formula is fine).
-
-*******
-
-### Q1. What is a Validation Rule?
+#### Q1. What is a Validation Rule?
 
 A **Validation Rule** is a business rule in Salesforce that prevents users from saving invalid or incorrect data.
 
@@ -1746,9 +1718,9 @@ Fail → Show Error
 Example:\
 Experience cannot be negative.
 
-* * * * *
+---
 
-### Q2. If Experience should not exceed 40 years, write formula logic.
+#### Q2. If Experience should not exceed 40 years, write formula logic.
 
 Formula:
 
@@ -1762,9 +1734,9 @@ Error Message:
 Experience cannot exceed 40 years.
 ```
 
-* * * * *
+---
 
-### Q3. Which function checks Picklist values?
+#### Q3. Which function checks Picklist values?
 
 Use:
 
@@ -1780,9 +1752,9 @@ ISPICKVAL(Status__c, "Completed")
 
 This checks whether the picklist value equals **Completed**.
 
-* * * * *
+---
 
-### Q4. Write formula logic: Enrollment Date should not be blank.
+#### Q4. Write formula logic: Enrollment Date should not be blank.
 
 Formula:
 
@@ -1796,9 +1768,9 @@ Error Message:
 Enrollment Date is required.
 ```
 
-* * * * *
+---
 
-### Q5. Business Rule: If Course Cost > 0, Category cannot be blank. Formula logic:
+#### Q5. Business Rule: If Course Cost > 0, Category cannot be blank. Formula logic:
 
 ```
 AND(Cost__c > 0,ISBLANK(TEXT(Category__c)))
@@ -1812,30 +1784,29 @@ Category is required when Course Cost is greater than zero.
 
 Explanation:
 
--   `Cost__c > 0` → Course has a price
--   `ISBLANK(TEXT(Category__c))` → Category is empty
--   `AND()` → Both conditions true → ❌ Block save
+- `Cost__c > 0` → Course has a price
+- `ISBLANK(TEXT(Category__c))` → Category is empty
+- `AND()` → Both conditions true → ❌ Block save
 
-Lesson 7 --- Formula Fields & Roll-Up Summary
-===========================================
+---
 
-This is where Salesforce becomes powerful.
+## Lesson 7 — Formula Fields & Roll-Up Summary
 
-Objective
----------
+> This is where Salesforce becomes powerful.
+
+### Objective
 
 By the end of this lesson:
 
-1.  Create Formula Fields
-2.  Understand Calculated Values
-3.  Use Cross-Object Formulas
-4.  Build Roll-Up Summary Fields
-5.  Use real reporting logic
+1. Create Formula Fields
+2. Understand Calculated Values
+3. Use Cross-Object Formulas
+4. Build Roll-Up Summary Fields
+5. Use real reporting logic
 
-* * * * *
+---
 
-1\. What is a Formula Field?
-============================
+### 1. What is a Formula Field?
 
 Formula Field = A field whose value is automatically calculated.
 
@@ -1869,13 +1840,11 @@ Output:
 96 months
 ```
 
-* * * * *
+---
 
-2\. Formula Field Examples
-==========================
+### 2. Formula Field Examples
 
-Employee Experience in Months
------------------------------
+#### Employee Experience in Months
 
 Field:
 
@@ -1889,10 +1858,9 @@ Formula:
 Experience__c * 12
 ```
 
-* * * * *
+---
 
-Certification Status
---------------------
+#### Certification Status
 
 Business Rule:
 
@@ -1910,7 +1878,7 @@ Example:
 IF(Is_Certified__c,"Completed","In Progress")
 ```
 
-### How IF() works
+**How IF() works**
 
 Structure:
 
@@ -1920,13 +1888,11 @@ IF(condition,value_if_true,value_if_false)
 
 Meaning:
 
--   Check a condition
--   If condition = TRUE → return first value
--   Otherwise → return second value
+- Check a condition
+- If condition = TRUE → return first value
+- Otherwise → return second value
 
-* * * * *
-
-### In your example:
+**In your example:**
 
 ```
 IF(Is_Certified__c,"Completed","In Progress")
@@ -1940,21 +1906,21 @@ Breakdown:
 | `"Completed"` | Show this if checkbox = TRUE |
 | `"In Progress"` | Show this if checkbox = FALSE |
 
-* * * * *
+---
 
-Course Discount
----------------
+#### Course Discount
 
 Fields:
 
 ```
-Cost__cDiscount__c
+Cost__c
+Discount__c
 ```
 
 Formula:
 
 ```
-Cost__c-(Cost__c*Discount__c/100)
+Cost__c - (Cost__c * Discount__c / 100)
 ```
 
 Business Rule:
@@ -1963,16 +1929,10 @@ Business Rule:
 
 Fields:
 
--   `Cost__c` → Currency
--   `Discount__c` → Number (Percentage)
+- `Cost__c` → Currency
+- `Discount__c` → Number (Percentage)
 
-Formula:
-
-```
-Cost__c - (Cost__c * Discount__c / 100)
-```
-
-### How it works
+**How it works**
 
 Formula structure:
 
@@ -1992,9 +1952,7 @@ Final result:
 Cost - Discount Amount
 ```
 
-* * * * *
-
-### Example 1
+**Example:**
 
 Course Cost:
 
@@ -2020,10 +1978,9 @@ Result:
 ₹8,000
 ```
 
-* * * * *
+---
 
-3\. Cross-Object Formula
-========================
+### 3. Cross-Object Formula
 
 Formula can reference parent fields.
 
@@ -2036,29 +1993,32 @@ Enrollment.Course.Cost
 Meaning:
 
 ```
-Enrollment↓Read Course Cost
+Enrollment
+↓
+Read Course Cost
 ```
 
 Very common.
 
-* * * * *
+---
 
-4\. Roll-Up Summary (Master-Detail Only)
-========================================
+### 4. Roll-Up Summary (Master-Detail Only)
 
 Roll-Up Summary calculates values from child records.
 
 Operations:
 
--   COUNT
--   SUM
--   MIN
--   MAX
+- COUNT
+- SUM
+- MIN
+- MAX
 
 Example:
 
 ```
-Course↓Enrollment
+Course
+↓
+Enrollment
 ```
 
 Count enrollments.
@@ -2069,12 +2029,12 @@ Output:
 Total Enrollments = 25
 ```
 
-* * * * *
-
 Example:
 
 ```
-Employee↓Enrollment
+Employee
+↓
+Enrollment
 ```
 
 Roll-Up:
@@ -2085,10 +2045,9 @@ Completed Courses
 
 Count child records.
 
-* * * * *
+---
 
-Real Project
-============
+### Real Project
 
 Employee Dashboard:
 
@@ -2101,15 +2060,19 @@ Employee
 
 Most of this comes from Formula + Roll-Up.
 
-### Q1. What is a Formula Field?
+---
+
+### Knowledge Check
+
+#### Q1. What is a Formula Field?
 
 A **Formula Field** is a field in Salesforce that automatically calculates and displays a value based on other fields.
 
 Characteristics:
 
--   Read-only
--   Auto-updates when source data changes
--   No manual input required
+- Read-only
+- Auto-updates when source data changes
+- No manual input required
 
 Example:
 
@@ -2117,9 +2080,9 @@ Example:
 Cost__c - (Cost__c * Discount__c / 100)
 ```
 
-* * * * *
+---
 
-### Q2. Write formula: Convert Experience years into months.
+#### Q2. Write formula: Convert Experience years into months.
 
 Formula:
 
@@ -2134,11 +2097,9 @@ Example:
 | 2 | 24 Months |
 | 5 | 60 Months |
 
-* * * * *
+---
 
-### Q3. Write formula:
-
-If Cost > 10000 → return "Premium", else "Standard".
+#### Q3. Write formula: If Cost > 10000 → return "Premium", else "Standard".
 
 Formula:
 
@@ -2153,9 +2114,9 @@ Example:
 | ₹15,000 | Premium |
 | ₹8,000 | Standard |
 
-* * * * *
+---
 
-### Q4. Which relationship supports Roll-Up Summary and why?
+#### Q4. Which relationship supports Roll-Up Summary and why?
 
 ✅ **Master-Detail Relationship**
 
@@ -2164,16 +2125,16 @@ Because Salesforce allows parent records to automatically calculate values from 
 
 Examples:
 
--   Count child records
--   Sum values
--   Minimum value
--   Maximum value
+- Count child records
+- Sum values
+- Minimum value
+- Maximum value
 
 Lookup relationships do not support Roll-Up Summary directly.
 
-* * * * *
+---
 
-### Q5. Scenario: Employee has many Enrollments. Create a Roll-Up Summary requirement to show completed course count.
+#### Q5. Scenario: Employee has many Enrollments. Create a Roll-Up Summary requirement to show completed course count.
 
 Design:
 
@@ -2230,20 +2191,38 @@ Filter → Status = Completed
 
 This automatically updates whenever enrollment status changes. ✅
 
+---
 
-Lesson 8 --- Salesforce Security Model
-======================================
+## Lesson 8 — Salesforce Security Model
 
-Why Security Matters
---------------------
+> Security is one of the most important Admin responsibilities.
+
+### Objective
+
+By the end of this lesson you should understand:
+
+1. Authentication vs Authorization
+2. Salesforce Security Architecture
+3. Profiles
+4. Permission Sets
+5. Roles
+6. OWD (Organization-Wide Defaults)
+7. Sharing Rules
+8. Field-Level Security
+9. Record Access Evaluation Order
+10. Real Project Security Design
+
+---
+
+### Why Security Matters
 
 Imagine your company stores:
 
--   Employee salaries
--   Customer information
--   Certifications
--   Sales pipeline
--   Internal documents
+- Employee salaries
+- Customer information
+- Certifications
+- Sales pipeline
+- Internal documents
 
 Question:
 
@@ -2263,35 +2242,13 @@ Right Time
 Right Action
 ```
 
-Security is one of the most important Admin responsibilities.
+---
 
-* * * * *
-
-Learning Objectives
-===================
-
-By the end of this lesson you should understand:
-
-1.  Authentication vs Authorization
-2.  Salesforce Security Architecture
-3.  Profiles
-4.  Permission Sets
-5.  Roles
-6.  OWD (Organization-Wide Defaults)
-7.  Sharing Rules
-8.  Field-Level Security
-9.  Record Access Evaluation Order
-10. Real Project Security Design
-
-* * * * *
-
-1\. Authentication vs Authorization
-===================================
+### 1. Authentication vs Authorization
 
 This confuses many beginners.
 
-Authentication → Who are you?
------------------------------
+#### Authentication — Who Are You?
 
 Verifies identity.
 
@@ -2317,10 +2274,9 @@ Password
 
 Access granted.
 
-* * * * *
+---
 
-Authorization → What can you do?
---------------------------------
+#### Authorization — What Can You Do?
 
 Controls permissions.
 
@@ -2344,10 +2300,9 @@ Cannot delete Course
 
 That is Authorization.
 
-* * * * *
+---
 
-2\. Salesforce Security Layers (Very Important)
-===============================================
+### 2. Salesforce Security Layers (Very Important)
 
 Security is evaluated in layers.
 
@@ -2381,28 +2336,25 @@ Cannot see Salary field
 Can only view owned records
 ```
 
-* * * * *
+---
 
-3\. Profiles (Foundation of User Access)
-========================================
+### 3. Profiles (Foundation of User Access)
 
 Profile defines:
 
-Login Access
-------------
+#### Login Access
 
 Can user log in?
 
 Example:
 
 ```
-Allowed:08:00-18:00
+Allowed: 08:00 - 18:00
 ```
 
-* * * * *
+---
 
-Object Permissions
-------------------
+#### Object Permissions
 
 CRUD:
 
@@ -2424,10 +2376,9 @@ Edit ✓
 Delete ✗
 ```
 
-* * * * *
+---
 
-Field Permissions
------------------
+#### Field Permissions
 
 Controls:
 
@@ -2445,10 +2396,9 @@ Visible ✓
 Editable ✗
 ```
 
-* * * * *
+---
 
-App Access
-----------
+#### App Access
 
 Example:
 
@@ -2457,13 +2407,9 @@ Learning App ✓
 HR App ✗
 ```
 
-* * * * *
-
 Rule:
 
 > Every user must have exactly ONE Profile.
-
-* * * * *
 
 Example:
 
@@ -2475,10 +2421,9 @@ Course → Read
 Certification → Edit
 ```
 
-* * * * *
+---
 
-4\. Permission Sets (Extend Access)
-===================================
+### 4. Permission Sets (Extend Access)
 
 Profiles should stay minimal.
 
@@ -2518,15 +2463,11 @@ Permission Set
 Extra access
 ```
 
-* * * * *
-
 Rules:
 
 ✅ Multiple allowed\
 ✅ Adds access\
 ❌ Cannot reduce access
-
-* * * * *
 
 Example:
 
@@ -2542,10 +2483,9 @@ Edit Course
 Run Reports
 ```
 
-* * * * *
+---
 
-Profile vs Permission Set
-=========================
+#### Profile vs Permission Set
 
 | Profile | Permission Set |
 | --- | --- |
@@ -2553,10 +2493,9 @@ Profile vs Permission Set
 | One per user | Multiple |
 | Baseline access | Additional access |
 
-* * * * *
+---
 
-5\. Roles (Record Visibility)
-=============================
+### 5. Roles (Record Visibility)
 
 Roles do NOT grant CRUD.
 
@@ -2594,8 +2533,6 @@ Manager can see subordinate records.
 
 Employee cannot see manager records.
 
-* * * * *
-
 Example:
 
 | User | Role |
@@ -2611,10 +2548,9 @@ Tarun records
 Narendra records
 ```
 
-* * * * *
+---
 
-Roles vs Profiles (Interview Question)
-======================================
+#### Roles vs Profiles
 
 | Profile | Role |
 | --- | --- |
@@ -2622,10 +2558,9 @@ Roles vs Profiles (Interview Question)
 | CRUD | Visibility |
 | Mandatory | Optional |
 
-* * * * *
+---
 
-6\. Organization-Wide Defaults (OWD)
-====================================
+### 6. Organization-Wide Defaults (OWD)
 
 OWD defines default record access.
 
@@ -2635,12 +2570,7 @@ Think:
 Starting Access
 ```
 
-Types:
-
-* * * * *
-
-Private
--------
+#### Private
 
 Only owner.
 
@@ -2652,23 +2582,19 @@ Narendra → Enrollment
 
 Only Narendra sees it.
 
-* * * * *
+---
 
-Public Read Only
-----------------
+#### Public Read Only
 
 Everyone can view.
 
 Cannot edit.
 
-* * * * *
+---
 
-Public Read/Write
------------------
+#### Public Read/Write
 
 Everyone can view and edit.
-
-* * * * *
 
 Example:
 
@@ -2682,10 +2608,9 @@ Everyone sees courses.
 
 Only admins edit.
 
-* * * * *
+---
 
-7\. Sharing Rules
-=================
+### 7. Sharing Rules
 
 Used to expand access.
 
@@ -2715,8 +2640,8 @@ Sharing Rule.
 
 Types:
 
--   Owner-based
--   Criteria-based
+- Owner-based
+- Criteria-based
 
 Example:
 
@@ -2726,10 +2651,9 @@ Department = HR
 
 Share records.
 
-* * * * *
+---
 
-8\. Field-Level Security (FLS)
-==============================
+### 8. Field-Level Security (FLS)
 
 Controls field access.
 
@@ -2743,13 +2667,13 @@ Salary
 Experience
 ```
 
-Employee:
+Employee role:
 
 ```
 Salary → Hidden
 ```
 
-HR:
+HR role:
 
 ```
 Salary → Visible
@@ -2757,13 +2681,12 @@ Salary → Visible
 
 Controls:
 
--   Visible
--   Read Only
+- Visible
+- Read Only
 
-* * * * *
+---
 
-9\. Record Access Evaluation Order (Advanced)
-=============================================
+### 9. Record Access Evaluation Order (Advanced)
 
 Salesforce checks:
 
@@ -2785,10 +2708,9 @@ Remember:
 
 > Restrictive first → Open later
 
-* * * * *
+---
 
-10\. Real Project Security Design
-=================================
+### 10. Real Project Security Design
 
 Project:\
 Employee Learning & Certification
@@ -2827,10 +2749,7 @@ Course Editor
 Report Viewer
 ```
 
-* * * * *
-
-Real Scenario
-=============
+**Real Scenario**
 
 Narendra logs in.
 
@@ -2843,7 +2762,9 @@ Employee
 Permissions:
 
 ```
-Employee → ReadCourse → ReadEnrollment → CRUD
+Employee → Read
+Course → Read
+Enrollment → CRUD
 ```
 
 Role:
@@ -2866,10 +2787,9 @@ Can see own enrollment
 Cannot see others
 ```
 
-* * * * *
+---
 
-Hands-On (Do in Developer Org)
-==============================
+### Hands-On Activity
 
 Open:
 
@@ -2895,7 +2815,11 @@ Create Course Editor
 
 Explore screens only.
 
-### Q1. Explain Authentication vs Authorization.
+---
+
+### Knowledge Check
+
+#### Q1. Explain Authentication vs Authorization.
 
 | Authentication | Authorization |
 | --- | --- |
@@ -2906,12 +2830,12 @@ Explore screens only.
 
 Example:
 
--   Login with email + password → **Authentication**
--   Access Employee records → **Authorization**
+- Login with email + password → **Authentication**
+- Access Employee records → **Authorization**
 
-* * * * *
+---
 
-### Q2. Difference between Profile and Permission Set?
+#### Q2. Difference between Profile and Permission Set?
 
 | Profile | Permission Set |
 | --- | --- |
@@ -2922,8 +2846,8 @@ Example:
 
 Example:
 
--   Employee Profile → Basic access
--   Course Management Permission Set → Extra course permissions
+- Employee Profile → Basic access
+- Course Management Permission Set → Extra course permissions
 
 Think:
 
@@ -2932,9 +2856,9 @@ Profile = Base Package
 Permission Set = Add-on Package
 ```
 
-* * * * *
+---
 
-### Q3. Difference between Role and Profile?
+#### Q3. Difference between Role and Profile?
 
 | Role | Profile |
 | --- | --- |
@@ -2959,43 +2883,42 @@ Manager can see subordinate records
 
 Quick memory:
 
--   **Profile → Actions**
--   **Role → Visibility**
+- **Profile → Actions**
+- **Role → Visibility**
 
-* * * * *
+---
 
-### Q4. OWD = Private → User A owns record. User B sees it?
+#### Q4. OWD = Private → User A owns record. User B sees it?
 
 Answer:\
 ❌ **No (by default).**
 
 If **OWD (Organization-Wide Default) = Private**:
 
--   Only record owner
--   Users above owner in role hierarchy
--   Explicit sharing
+- Only record owner
+- Users above owner in role hierarchy
+- Explicit sharing
 
 can access the record.
 
 Example:
 
 ```
-User A → Owns EnrollmentUser B → Cannot see
+User A → Owns Enrollment
+User B → Cannot see
 ```
 
 Unless access is granted.
 
-* * * * *
+---
 
-### Q5. Design security
+#### Q5. Design security for the following requirement:
 
-Requirement:
+- Employees → see own enrollments only
+- Managers → see team enrollments
+- HR → see all employee records
 
--   Employees → see own enrollments only
--   Managers → see team enrollments
--   HR → see all employee records
-
-### Profiles
+**Profiles**
 
 | Profile | Access |
 | --- | --- |
@@ -3005,13 +2928,11 @@ Requirement:
 
 Profiles control:
 
--   Object permissions
--   Field permissions
--   Apps/Tabs
+- Object permissions
+- Field permissions
+- Apps/Tabs
 
-* * * * *
-
-### Roles
+**Roles**
 
 Role Hierarchy:
 
@@ -3025,25 +2946,22 @@ Employees
 
 Effect:
 
--   Managers see employee records below them
--   HR sees all
+- Managers see employee records below them
+- HR sees all
 
-* * * * *
-
-### OWD
+**OWD**
 
 Set:
 
 ```
-Employee → PrivateEnrollment → Private
+Employee → Private
+Enrollment → Private
 ```
 
 Reason:\
 Default access should be restricted.
 
-* * * * *
-
-### Sharing Rules
+**Sharing Rules**
 
 Create sharing:
 
@@ -3076,38 +2994,31 @@ Result:\
 ✅ Managers → team visibility\
 ✅ HR → complete employee visibility
 
-Lesson 9 --- Salesforce Flow Builder
-====================================
+---
 
-This is one of the most important Salesforce Admin topics.
+## Lesson 9 — Salesforce Flow Builder
 
-Modern Salesforce automation is centered around **Flow Builder**.
+> Modern Salesforce automation is centered around Flow Builder. If you become strong in Flow, you become highly valuable as a Salesforce Admin.
 
-If you become strong in Flow, you become highly valuable as a Salesforce Admin.
-
-* * * * *
-
-Learning Objectives
-===================
+### Objective
 
 By the end of this lesson you should understand:
 
-1.  What Flow Builder is
-2.  Why Salesforce moved to Flow
-3.  Flow Architecture
-4.  Types of Flows
-5.  Flow Components
-6.  Record-Triggered Flow
-7.  Screen Flow
-8.  Scheduled Flow
-9.  Autolaunched Flow
+1. What Flow Builder is
+2. Why Salesforce moved to Flow
+3. Flow Architecture
+4. Types of Flows
+5. Flow Components
+6. Record-Triggered Flow
+7. Screen Flow
+8. Scheduled Flow
+9. Autolaunched Flow
 10. Real Project Automation Design
 11. Best Practices
 
-* * * * *
+---
 
-1\. What is Flow?
-=================
+### 1. What is Flow?
 
 Flow is Salesforce's **low-code / no-code automation engine**.
 
@@ -3139,10 +3050,9 @@ Update Employee
 
 Automation completed.
 
-* * * * *
+---
 
-Why Flow?
-=========
+### Why Flow?
 
 Old Salesforce automation:
 
@@ -3161,15 +3071,14 @@ Salesforce recommends Flow for nearly all new automation.
 
 Reason:
 
--   More powerful
--   Better performance
--   Supports complex logic
--   Can replace multiple tools
+- More powerful
+- Better performance
+- Supports complex logic
+- Can replace multiple tools
 
-* * * * *
+---
 
-2\. Open Flow Builder
-=====================
+### 2. Open Flow Builder
 
 Navigate:
 
@@ -3185,10 +3094,9 @@ Flow canvas appears.
 
 This is where automation is designed.
 
-* * * * *
+---
 
-3\. Flow Architecture
-=====================
+### 3. Flow Architecture
 
 Every Flow follows:
 
@@ -3218,17 +3126,11 @@ Update Record
 Send Email
 ```
 
-* * * * *
+---
 
-4\. Types of Flow
-=================
+### 4. Types of Flow
 
-There are four major flows.
-
-* * * * *
-
-A. Record-Triggered Flow (Most Important)
-=========================================
+#### A. Record-Triggered Flow (Most Important)
 
 Runs automatically when records change.
 
@@ -3242,10 +3144,7 @@ Delete
 
 No user clicks.
 
-* * * * *
-
-Example
--------
+**Example**
 
 Requirement:
 
@@ -3265,22 +3164,14 @@ Assignment
 Update Status
 ```
 
-* * * * *
+**Real Cases**
 
-Real Cases
-----------
+- Auto create Tasks
+- Update parent records
+- Send notifications
+- Trigger approvals
 
--   Auto create Tasks
--   Update parent records
--   Send notifications
--   Trigger approvals
-
-* * * * *
-
-Types
------
-
-### Before Save
+**Before Save**
 
 Runs before database save.
 
@@ -3294,9 +3185,7 @@ Example:
 
 Auto calculate fields.
 
-* * * * *
-
-### After Save
+**After Save**
 
 Runs after save.
 
@@ -3308,8 +3197,6 @@ Emails
 Create records
 ```
 
-* * * * *
-
 Example:
 
 ```
@@ -3318,10 +3205,9 @@ Enrollment saved
 Create Certification
 ```
 
-* * * * *
+---
 
-B. Screen Flow
-==============
+#### B. Screen Flow
 
 Shows UI screens.
 
@@ -3337,10 +3223,7 @@ Enter Values
 Submit
 ```
 
-* * * * *
-
-Example
--------
+**Example**
 
 Employee Enrollment:
 
@@ -3354,19 +3237,16 @@ Submit
 Create Enrollment
 ```
 
-* * * * *
-
 Use Screen Flow for:
 
--   Wizards
--   Forms
--   Guided setup
--   Portals
+- Wizards
+- Forms
+- Guided setup
+- Portals
 
-* * * * *
+---
 
-C. Scheduled Flow
-=================
+#### C. Scheduled Flow
 
 Runs at scheduled times.
 
@@ -3378,8 +3258,6 @@ Weekly
 Monthly
 ```
 
-* * * * *
-
 Example:
 
 Every day:
@@ -3390,19 +3268,16 @@ Find expired certifications
 Send reminder
 ```
 
-* * * * *
-
 Use Cases:
 
--   Notifications
--   Cleanup
--   Reports
--   Batch updates
+- Notifications
+- Cleanup
+- Reports
+- Batch updates
 
-* * * * *
+---
 
-D. Autolaunched Flow
-====================
+#### D. Autolaunched Flow
 
 Runs silently.
 
@@ -3410,12 +3285,10 @@ No UI.
 
 Starts from:
 
--   Apex
--   Another Flow
--   API
--   Button
-
-* * * * *
+- Apex
+- Another Flow
+- API
+- Button
 
 Example:
 
@@ -3424,18 +3297,16 @@ Certification complete:
 ```
 Update Employee
   ↓
-Send Email↓Create Log
+Send Email
+  ↓
+Create Log
 ```
 
-* * * * *
+---
 
-5\. Flow Elements (Building Blocks)
-===================================
+### 5. Flow Elements (Building Blocks)
 
-* * * * *
-
-Start
------
+#### Start
 
 Flow entry point.
 
@@ -3445,10 +3316,9 @@ Example:
 Record Created
 ```
 
-* * * * *
+---
 
-Get Records
------------
+#### Get Records
 
 Fetch data.
 
@@ -3464,10 +3334,9 @@ Equivalent:
 SELECT
 ```
 
-* * * * *
+---
 
-Create Records
---------------
+#### Create Records
 
 Insert records.
 
@@ -3483,10 +3352,9 @@ Equivalent:
 INSERT
 ```
 
-* * * * *
+---
 
-Update Records
---------------
+#### Update Records
 
 Modify records.
 
@@ -3502,10 +3370,9 @@ Equivalent:
 UPDATE
 ```
 
-* * * * *
+---
 
-Delete Records
---------------
+#### Delete Records
 
 Remove records.
 
@@ -3515,10 +3382,9 @@ Equivalent:
 DELETE
 ```
 
-* * * * *
+---
 
-Decision
---------
+#### Decision
 
 IF / ELSE logic.
 
@@ -3528,10 +3394,9 @@ Example:
 Score > 80
 ```
 
-* * * * *
+---
 
-Assignment
-----------
+#### Assignment
 
 Store values.
 
@@ -3541,10 +3406,9 @@ Example:
 Status = Completed
 ```
 
-* * * * *
+---
 
-Loop
-----
+#### Loop
 
 Process collections.
 
@@ -3554,10 +3418,9 @@ Example:
 Process enrollments
 ```
 
-* * * * *
+---
 
-Send Email
-----------
+#### Send Email
 
 Notify users.
 
@@ -3567,10 +3430,9 @@ Example:
 Course Completed
 ```
 
-* * * * *
+---
 
-6\. Build Our Project Flow
-==========================
+### 6. Build Our Project Flow
 
 Requirement:
 
@@ -3578,9 +3440,9 @@ When Certification Status becomes Completed:
 
 System should:
 
--   Update Employee
--   Mark Certified
--   Send Email
+- Update Employee
+- Mark Certified
+- Send Email
 
 Flow Design:
 
@@ -3591,13 +3453,12 @@ Decision
   ↓
 Update Employee
   ↓
-Send Email↓End
+Send Email
+  ↓
+End
 ```
 
-* * * * *
-
-Configuration
--------------
+#### Configuration
 
 Object:
 
@@ -3621,16 +3482,15 @@ Actions:
 
 ```
 Update Employee
-Set Certified=True
+Set Certified = True
 Send Email
 ```
 
-* * * * *
+---
 
-7\. Flow Best Practices
-=======================
+### 7. Flow Best Practices
 
-### Keep one purpose per flow
+**Keep one purpose per flow**
 
 Good:
 
@@ -3644,43 +3504,34 @@ Bad:
 Everything Flow
 ```
 
-* * * * *
-
-### Avoid unnecessary loops
+**Avoid unnecessary loops**
 
 Bad performance.
 
-* * * * *
-
-### Use Before Save for updates
+**Use Before Save for updates**
 
 Faster.
 
-* * * * *
-
-### Add descriptions
+**Add descriptions**
 
 Document flows.
 
-* * * * *
-
-### Test in Sandbox
+**Test in Sandbox**
 
 Never directly in Production.
 
-* * * * *
+---
 
-Interview Questions
-===================
+### Interview Questions
 
-### What replaced Workflow Rules?
+**What replaced Workflow Rules?**
 
 Answer:\
 Flow Builder.
 
-* * * * *
+---
 
-### Difference between Before Save and After Save?
+**Difference between Before Save and After Save?**
 
 Before:
 
@@ -3691,28 +3542,33 @@ Fast field updates
 After:
 
 ```
-Related recordsEmails
+Related records
+Emails
 ```
 
-* * * * *
+---
 
-### Which flow shows screens?
+**Which flow shows screens?**
 
 Screen Flow.
 
-### Q1. What is Flow?
+---
+
+### Knowledge Check
+
+#### Q1. What is Flow?
 
 A **Flow** is Salesforce's automation tool used to automate business processes without writing code.
 
 Flow can:
 
--   Create records
--   Update records
--   Delete records
--   Send emails
--   Display screens
--   Make decisions
--   Automate workflows
+- Create records
+- Update records
+- Delete records
+- Send emails
+- Display screens
+- Make decisions
+- Automate workflows
 
 Think:
 
@@ -3727,9 +3583,9 @@ Action
 Example:\
 Employee completes course → Update certification → Send email.
 
-* * * * *
+---
 
-### Q2. Difference between Record Triggered Flow and Screen Flow?
+#### Q2. Difference between Record Triggered Flow and Screen Flow?
 
 | Record Triggered Flow | Screen Flow |
 | --- | --- |
@@ -3740,12 +3596,12 @@ Employee completes course → Update certification → Send email.
 
 Example:
 
--   Enrollment created → Auto update status → **Record Triggered**
--   Employee registration form → **Screen Flow**
+- Enrollment created → Auto update status → **Record Triggered**
+- Employee registration form → **Screen Flow**
 
-* * * * *
+---
 
-### Q3. Difference between Before Save and After Save?
+#### Q3. Difference between Before Save and After Save?
 
 | Before Save | After Save |
 | --- | --- |
@@ -3755,8 +3611,8 @@ Example:
 
 Example:
 
--   Set Status automatically → Before Save
--   Send Email → After Save
+- Set Status automatically → Before Save
+- Send Email → After Save
 
 Memory trick:
 
@@ -3765,21 +3621,17 @@ Before Save → Modify
 After Save → Act
 ```
 
-* * * * *
+---
 
-### Q4. Business Case:
-
-When Enrollment created → Set Status = Enrolled.
-
-Which Flow type?
+#### Q4. Business Case: When Enrollment created → Set Status = Enrolled. Which Flow type?
 
 ✅ **Record Triggered Flow → Before Save**
 
 Reason:
 
--   Triggered automatically
--   Updates same Enrollment record
--   Best performance
+- Triggered automatically
+- Updates same Enrollment record
+- Best performance
 
 Flow:
 
@@ -3791,19 +3643,11 @@ Set Status = Enrolled
 Save
 ```
 
-* * * * *
+---
 
-### Q5. Design Flow
+#### Q5. Design Flow: If Certification Status = Completed → Employee Is Certified = True → Send Email
 
-Requirement:\
-If Certification Status = Completed
-
-Then:
-
--   Employee Is Certified = True
--   Send Email
-
-### Trigger
+**Trigger**
 
 ```
 Record Triggered Flow
@@ -3822,9 +3666,7 @@ Send Email
 End
 ```
 
-* * * * *
-
-### Decision
+**Decision**
 
 Decision Element:
 
@@ -3834,12 +3676,10 @@ Certification Status = Completed ?
 
 Outcomes:
 
--   Yes → Continue
--   No → End
+- Yes → Continue
+- No → End
 
-* * * * *
-
-### Actions
+**Actions**
 
 Action 1:
 
@@ -3852,8 +3692,7 @@ Action 2:
 
 ```
 Send Email
-Subject:
-Certification Completed
+Subject: Certification Completed
 
 Body:
 Hello,
@@ -3899,32 +3738,26 @@ Certification Completed?
 
 This is a standard **Record Triggered Flow + Decision + Actions** pattern in Salesforce Admin automation. ✅
 
-Lesson 10 --- Approval Processes (Enterprise Automation)
-======================================================
+---
 
-Approvals are used when records require authorization before moving forward.
+## Lesson 10 — Approval Processes (Enterprise Automation)
 
-Examples:
+> Approvals are used when records require authorization before moving forward.
 
--   Manager approval
--   HR approval
--   Expense approval
--   Course approval
+### Objective
 
-Learning Objectives
--------------------
+By the end of this lesson you will understand:
 
-1.  What Approval Process is
-2.  Approval Lifecycle
-3.  Approval Components
-4.  Entry Criteria
-5.  Approval Actions
-6.  Project Approval Design
+1. What Approval Process is
+2. Approval Lifecycle
+3. Approval Components
+4. Entry Criteria
+5. Approval Actions
+6. Project Approval Design
 
-* * * * *
+---
 
-What is Approval Process?
-=========================
+### 1. What is an Approval Process?
 
 Approval Process automates:
 
@@ -3944,10 +3777,16 @@ Manager approves.
 
 System updates status.
 
-* * * * *
+Examples:
 
-Approval Lifecycle
-==================
+- Manager approval
+- HR approval
+- Expense approval
+- Course approval
+
+---
+
+### 2. Approval Lifecycle
 
 ```
 Draft
@@ -3959,13 +3798,11 @@ Pending Approval
 Approved/Rejected
 ```
 
-* * * * *
+---
 
-Components
-==========
+### 3. Components
 
-Entry Criteria
---------------
+#### Entry Criteria
 
 Defines:
 
@@ -3979,10 +3816,9 @@ Example:
 Course Cost > 50000
 ```
 
-* * * * *
+---
 
-Approver
---------
+#### Approver
 
 Who approves?
 
@@ -3995,12 +3831,11 @@ Queue
 Specific User
 ```
 
-* * * * *
+---
 
-Approval Actions
-----------------
+#### Approval Actions
 
-### Initial Submission
+**Initial Submission**
 
 Example:
 
@@ -4009,9 +3844,7 @@ Lock Record
 Send Email
 ```
 
-* * * * *
-
-### Final Approval
+**Final Approval**
 
 Example:
 
@@ -4020,9 +3853,7 @@ Update Status
 Create Certification
 ```
 
-* * * * *
-
-### Final Rejection
+**Final Rejection**
 
 Example:
 
@@ -4030,10 +3861,9 @@ Example:
 Set Status = Rejected
 ```
 
-* * * * *
+---
 
-Project Scenario
-================
+### 4. Project Scenario
 
 Requirement:
 
@@ -4059,7 +3889,11 @@ Approved
 Create Certification
 ```
 
-### Q1. What is an Approval Process?
+---
+
+### Knowledge Check
+
+#### Q1. What is an Approval Process?
 
 An **Approval Process** in Salesforce is an automation that routes records to one or more users for approval before the record can move forward.
 
@@ -4078,9 +3912,9 @@ Final Action
 Example:\
 Course costing ₹30,000 requires manager approval before enrollment.
 
-* * * * *
+---
 
-### Q2. Difference between Flow and Approval Process?
+#### Q2. Difference between Flow and Approval Process?
 
 | Flow | Approval Process |
 | --- | --- |
@@ -4091,12 +3925,12 @@ Course costing ₹30,000 requires manager approval before enrollment.
 
 Example:
 
--   Auto update Enrollment → **Flow**
--   Course approval workflow → **Approval Process**
+- Auto update Enrollment → **Flow**
+- Course approval workflow → **Approval Process**
 
-* * * * *
+---
 
-### Q3. What is Entry Criteria?
+#### Q3. What is Entry Criteria?
 
 **Entry Criteria** defines the conditions that must be true for a record to enter the approval process.
 
@@ -4118,37 +3952,30 @@ Course_Cost__c > 25000
 
 Only records matching this condition enter approval.
 
-* * * * *
+---
 
-### Q4. Who can act as Approver?
+#### Q4. Who can act as Approver?
 
 Approvers can be:
 
--   Specific User
--   Manager
--   Role
--   Queue
--   Related User
--   Automated Approver assignment
+- Specific User
+- Manager
+- Role
+- Queue
+- Related User
+- Automated Approver assignment
 
 Example:
 
--   Employee's Manager
--   HR Manager
--   Department Head
+- Employee's Manager
+- HR Manager
+- Department Head
 
-* * * * *
+---
 
-### Q5. Design approval
+#### Q5. Design approval: If Course Cost > ₹25,000 → Manager approves → HR approves → Enrollment Status = Approved
 
-Requirement:\
-If Course Cost > ₹25,000:
-
-1.  Manager approves
-2.  HR approves
-3.  Enrollment Status = Approved
-
-### Entry Criteria
+**Entry Criteria**
 
 Formula:
 
@@ -4156,20 +3983,18 @@ Formula:
 Course_Cost__c > 25000
 ```
 
-* * * * *
-
-### Approvers
+**Approvers**
 
 Step 1:
 
 ```
-Approver:Employee Manager
+Approver: Employee Manager
 ```
 
 Step 2:
 
 ```
-Approver:HR Team / HR Manager
+Approver: HR Team / HR Manager
 ```
 
 Approval Chain:
@@ -4182,9 +4007,7 @@ HR
 Complete
 ```
 
-* * * * *
-
-### Actions
+**Actions**
 
 Initial Submission Action:
 
@@ -4227,27 +4050,26 @@ End
 
 This is a **multi-step approval process** with sequential approvals. ✅
 
-Lesson 11 --- Reports & Dashboards (Business Visibility)
-======================================================
+---
 
-Admins spend a lot of time building reports.
+## Lesson 11 — Reports & Dashboards (Business Visibility)
 
-Learning Objectives
--------------------
+> Admins spend a lot of time building reports.
+
+### Objective
 
 By the end of this lesson:
 
-1.  Understand Reports
-2.  Report Types
-3.  Filters
-4.  Dashboard Components
-5.  Dynamic Dashboards
-6.  Real Project Analytics
+1. Understand Reports
+2. Report Types
+3. Filters
+4. Dashboard Components
+5. Dynamic Dashboards
+6. Real Project Analytics
 
-* * * * *
+---
 
-What is a Report?
-=================
+### 1. What is a Report?
 
 Report = Structured view of Salesforce data.
 
@@ -4260,14 +4082,13 @@ What is happening?
 
 Examples:
 
--   Employee certifications
--   Course completion
--   Enrollment counts
+- Employee certifications
+- Course completion
+- Enrollment counts
 
-* * * * *
+---
 
-Report Structure
-================
+### 2. Report Structure
 
 ```
 Object
@@ -4279,8 +4100,6 @@ Columns
 Output
 ```
 
-* * * * *
-
 Example:
 
 ```
@@ -4291,13 +4110,11 @@ Status = Completed
 Show Employee
 ```
 
-* * * * *
+---
 
-Report Types
-============
+### 3. Report Types
 
-Tabular
--------
+#### Tabular
 
 Simple list.
 
@@ -4307,10 +4124,9 @@ Example:
 All Employees
 ```
 
-* * * * *
+---
 
-Summary
--------
+#### Summary
 
 Grouped report.
 
@@ -4320,10 +4136,9 @@ Example:
 Courses grouped by Category
 ```
 
-* * * * *
+---
 
-Matrix
-------
+#### Matrix
 
 Rows + Columns.
 
@@ -4333,10 +4148,9 @@ Example:
 Department vs Completion
 ```
 
-* * * * *
+---
 
-Joined
-------
+#### Joined
 
 Multiple reports.
 
@@ -4346,18 +4160,17 @@ Example:
 Enrollments + Certifications
 ```
 
-* * * * *
+---
 
-Dashboard
-=========
+### 4. Dashboard
 
 Visual layer.
 
 Displays:
 
--   Charts
--   Tables
--   Metrics
+- Charts
+- Tables
+- Metrics
 
 Components:
 
@@ -4369,10 +4182,9 @@ Metric
 Table
 ```
 
-* * * * *
+---
 
-Dynamic Dashboard
-=================
+### 5. Dynamic Dashboard
 
 Runs using logged-in user access.
 
@@ -4390,10 +4202,9 @@ Employee sees:
 Own Data
 ```
 
-* * * * *
+---
 
-Project Dashboard
-=================
+### 6. Project Dashboard
 
 Employee Learning Dashboard:
 
@@ -4403,15 +4214,20 @@ Completed Courses
 Pending Approvals
 Certification Rate
 ```
-### Q1. What is a Report?
+
+---
+
+### Knowledge Check
+
+#### Q1. What is a Report?
 
 A **Report** in Salesforce is a structured view of records used to analyze, filter, group, and summarize data.
 
 Reports help answer questions like:
 
--   How many employees completed training?
--   Which courses have the highest enrollment?
--   What is total course revenue?
+- How many employees completed training?
+- Which courses have the highest enrollment?
+- What is total course revenue?
 
 Example:
 
@@ -4421,9 +4237,9 @@ Employee Name | Course | Status
 
 Reports are data-focused.
 
-* * * * *
+---
 
-### Q2. Difference between Report and Dashboard?
+#### Q2. Difference between Report and Dashboard?
 
 | Report | Dashboard |
 | --- | --- |
@@ -4434,8 +4250,8 @@ Reports are data-focused.
 
 Example:
 
--   Report → List of enrollments
--   Dashboard → Enrollment completion charts
+- Report → List of enrollments
+- Dashboard → Enrollment completion charts
 
 Think:
 
@@ -4444,9 +4260,9 @@ Report = Data
 Dashboard = Visualization
 ```
 
-* * * * *
+---
 
-### Q3. Difference between Summary and Matrix Report?
+#### Q3. Difference between Summary and Matrix Report?
 
 | Summary Report | Matrix Report |
 | --- | --- |
@@ -4477,17 +4293,17 @@ Example output:
 | DevOps | 20 | 5 |
 | Salesforce | 15 | 8 |
 
-* * * * *
+---
 
-### Q4. What is Dynamic Dashboard?
+#### Q4. What is Dynamic Dashboard?
 
 A **Dynamic Dashboard** displays data according to the **logged-in user's access and permissions**.
 
 Meaning:
 
--   Employee sees own records
--   Manager sees team records
--   HR sees organization records
+- Employee sees own records
+- Manager sees team records
+- HR sees organization records
 
 Example:
 
@@ -4501,9 +4317,9 @@ Based on User
 
 Useful for personalized reporting.
 
-* * * * *
+---
 
-### Q5. Design dashboard for Employee Learning System
+#### Q5. Design dashboard for Employee Learning System
 
 Dashboard Name:
 
@@ -4511,7 +4327,7 @@ Dashboard Name:
 Employee Learning Dashboard
 ```
 
-### Components
+**Components**
 
 | Component | Type |
 | --- | --- |
@@ -4522,9 +4338,7 @@ Employee Learning Dashboard
 | Monthly Enrollments | Line Chart |
 | Certification Completion Rate | Gauge |
 
-* * * * *
-
-### Data Sources
+**Data Sources**
 
 | Component | Report Source |
 | --- | --- |
@@ -4533,9 +4347,7 @@ Employee Learning Dashboard
 | Course Analytics | Course Report |
 | Certification Metrics | Enrollment + Employee Report |
 
-* * * * *
-
-### Filters
+**Filters**
 
 Dashboard Filters:
 
@@ -4560,4 +4372,3 @@ Monthly Trends | Department Analytics
 ```
 
 This dashboard gives HR and Managers a complete learning overview in one place. ✅
-
