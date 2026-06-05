@@ -2214,20 +2214,2017 @@ Implementation idea:
 
 ```
 Employee
-↓
+ ↓
 Fields & Relationships
-↓
+ ↓
 New
-↓
+ ↓
 Roll-Up Summary
-↓
+ ↓
 Summarized Object → Enrollment
-↓
+ ↓
 Roll-Up Type → COUNT
-↓
+ ↓
 Filter → Status = Completed
 ```
 
 This automatically updates whenever enrollment status changes. ✅
+
+
+Lesson 8 --- Salesforce Security Model
+======================================
+
+Why Security Matters
+--------------------
+
+Imagine your company stores:
+
+-   Employee salaries
+-   Customer information
+-   Certifications
+-   Sales pipeline
+-   Internal documents
+
+Question:
+
+Should every user see everything?
+
+❌ No.
+
+Salesforce Security ensures:
+
+```
+Right User
+  ↓
+Right Data
+  ↓
+Right Time
+  ↓
+Right Action
+```
+
+Security is one of the most important Admin responsibilities.
+
+* * * * *
+
+Learning Objectives
+===================
+
+By the end of this lesson you should understand:
+
+1.  Authentication vs Authorization
+2.  Salesforce Security Architecture
+3.  Profiles
+4.  Permission Sets
+5.  Roles
+6.  OWD (Organization-Wide Defaults)
+7.  Sharing Rules
+8.  Field-Level Security
+9.  Record Access Evaluation Order
+10. Real Project Security Design
+
+* * * * *
+
+1\. Authentication vs Authorization
+===================================
+
+This confuses many beginners.
+
+Authentication → Who are you?
+-----------------------------
+
+Verifies identity.
+
+Example:
+
+```
+Username
+Password
+MFA
+```
+
+Question:
+
+> Can user enter Salesforce?
+
+Example:
+
+```
+narendra@company.com
++
+Password
+```
+
+Access granted.
+
+* * * * *
+
+Authorization → What can you do?
+--------------------------------
+
+Controls permissions.
+
+Question:
+
+```
+Can view Employee?
+Can Edit Course?
+Can Delete Enrollment?
+```
+
+Example:
+
+User logs in successfully.
+
+But:
+
+```
+Cannot delete Course
+```
+
+That is Authorization.
+
+* * * * *
+
+2\. Salesforce Security Layers (Very Important)
+===============================================
+
+Security is evaluated in layers.
+
+Think like gates.
+
+```
+Login
+  ↓
+Profile
+  ↓
+Permission Set
+  ↓
+Object Access
+  ↓
+Field Access
+  ↓
+Record Access
+```
+
+If blocked at any layer → access denied.
+
+Example:
+
+```
+User logs in
+  ↓
+Has Employee object access
+  ↓
+Cannot see Salary field
+  ↓
+Can only view owned records
+```
+
+* * * * *
+
+3\. Profiles (Foundation of User Access)
+========================================
+
+Profile defines:
+
+Login Access
+------------
+
+Can user log in?
+
+Example:
+
+```
+Allowed:08:00-18:00
+```
+
+* * * * *
+
+Object Permissions
+------------------
+
+CRUD:
+
+| Permission | Meaning |
+| --- | --- |
+| Create | Add records |
+| Read | View |
+| Edit | Modify |
+| Delete | Remove |
+
+Example:
+
+Employee:
+
+```
+Create ✓
+Read ✓
+Edit ✓
+Delete ✗
+```
+
+* * * * *
+
+Field Permissions
+-----------------
+
+Controls:
+
+```
+Visible?
+Editable?
+```
+
+Example:
+
+Salary:
+
+```
+Visible ✓
+Editable ✗
+```
+
+* * * * *
+
+App Access
+----------
+
+Example:
+
+```
+Learning App ✓
+HR App ✗
+```
+
+* * * * *
+
+Rule:
+
+> Every user must have exactly ONE Profile.
+
+* * * * *
+
+Example:
+
+HR Profile:
+
+```
+Employee → CRUD
+Course → Read
+Certification → Edit
+```
+
+* * * * *
+
+4\. Permission Sets (Extend Access)
+===================================
+
+Profiles should stay minimal.
+
+Use Permission Sets for extras.
+
+Think:
+
+```
+Profile
++
+Temporary Access
+```
+
+Example:
+
+Employee Profile:
+
+```
+Read Employee
+```
+
+Need one user to edit Course.
+
+Add:
+
+```
+Course Editor Permission Set
+```
+
+Now:
+
+```
+Employee Profile
++
+Permission Set
+=
+Extra access
+```
+
+* * * * *
+
+Rules:
+
+✅ Multiple allowed\
+✅ Adds access\
+❌ Cannot reduce access
+
+* * * * *
+
+Example:
+
+```
+Permission Set:
+Course_Editor
+```
+
+Allows:
+
+```
+Edit Course
+Run Reports
+```
+
+* * * * *
+
+Profile vs Permission Set
+=========================
+
+| Profile | Permission Set |
+| --- | --- |
+| Mandatory | Optional |
+| One per user | Multiple |
+| Baseline access | Additional access |
+
+* * * * *
+
+5\. Roles (Record Visibility)
+=============================
+
+Roles do NOT grant CRUD.
+
+Roles decide:
+
+> Which records users can see.
+
+Hierarchy:
+
+```
+CEO
+ ↓
+Director
+ ↓
+Manager
+ ↓
+Employee
+```
+
+Example:
+
+Manager owns:
+
+```
+Enrollment A
+```
+
+Employee owns:
+
+```
+Enrollment B
+```
+
+Manager can see subordinate records.
+
+Employee cannot see manager records.
+
+* * * * *
+
+Example:
+
+| User | Role |
+| --- | --- |
+| Narendra | Employee |
+| Tarun | Manager |
+
+Tarun sees:
+
+```
+Tarun records
++
+Narendra records
+```
+
+* * * * *
+
+Roles vs Profiles (Interview Question)
+======================================
+
+| Profile | Role |
+| --- | --- |
+| What user can do | What records user can see |
+| CRUD | Visibility |
+| Mandatory | Optional |
+
+* * * * *
+
+6\. Organization-Wide Defaults (OWD)
+====================================
+
+OWD defines default record access.
+
+Think:
+
+```
+Starting Access
+```
+
+Types:
+
+* * * * *
+
+Private
+-------
+
+Only owner.
+
+Example:
+
+```
+Narendra → Enrollment
+```
+
+Only Narendra sees it.
+
+* * * * *
+
+Public Read Only
+----------------
+
+Everyone can view.
+
+Cannot edit.
+
+* * * * *
+
+Public Read/Write
+-----------------
+
+Everyone can view and edit.
+
+* * * * *
+
+Example:
+
+Course object:
+
+```
+Public Read Only
+```
+
+Everyone sees courses.
+
+Only admins edit.
+
+* * * * *
+
+7\. Sharing Rules
+=================
+
+Used to expand access.
+
+Think:
+
+```
+OWD
++
+Exception
+```
+
+Example:
+
+OWD:
+
+```
+Employee = Private
+```
+
+Requirement:
+
+HR Team must view all.
+
+Solution:
+
+Sharing Rule.
+
+Types:
+
+-   Owner-based
+-   Criteria-based
+
+Example:
+
+```
+Department = HR
+```
+
+Share records.
+
+* * * * *
+
+8\. Field-Level Security (FLS)
+==============================
+
+Controls field access.
+
+Example:
+
+Employee:
+
+```
+Name
+Salary
+Experience
+```
+
+Employee:
+
+```
+Salary → Hidden
+```
+
+HR:
+
+```
+Salary → Visible
+```
+
+Controls:
+
+-   Visible
+-   Read Only
+
+* * * * *
+
+9\. Record Access Evaluation Order (Advanced)
+=============================================
+
+Salesforce checks:
+
+```
+Profile
+ ↓
+Permission Set
+ ↓
+OWD
+ ↓
+Role Hierarchy
+ ↓
+Sharing Rules
+ ↓
+Manual Sharing
+```
+
+Remember:
+
+> Restrictive first → Open later
+
+* * * * *
+
+10\. Real Project Security Design
+=================================
+
+Project:\
+Employee Learning & Certification
+
+Objects:
+
+| Object | OWD |
+| --- | --- |
+| Employee | Private |
+| Course | Public Read |
+| Enrollment | Private |
+| Certification | Private |
+
+Roles:
+
+```
+CEO
+ ↓
+Manager
+ ↓
+Employee
+```
+
+Profiles:
+
+```
+Admin
+Manager
+Employee
+```
+
+Permission Sets:
+
+```
+Course Editor
+Report Viewer
+```
+
+* * * * *
+
+Real Scenario
+=============
+
+Narendra logs in.
+
+Profile:
+
+```
+Employee
+```
+
+Permissions:
+
+```
+Employee → ReadCourse → ReadEnrollment → CRUD
+```
+
+Role:
+
+```
+Employee
+```
+
+OWD:
+
+```
+Private
+```
+
+Result:
+
+```
+Can create enrollment
+Can see own enrollment
+Cannot see others
+```
+
+* * * * *
+
+Hands-On (Do in Developer Org)
+==============================
+
+Open:
+
+```
+Setup
+ ↓
+Profiles
+ ↓
+Clone Standard User
+ ↓
+Create Employee Profile
+```
+
+Then:
+
+```
+Setup
+ ↓
+Permission Sets
+ ↓
+Create Course Editor
+```
+
+Explore screens only.
+
+### Q1. Explain Authentication vs Authorization.
+
+| Authentication | Authorization |
+| --- | --- |
+| Verifies who the user is | Decides what the user can access |
+| Happens first | Happens after login |
+| Identity check | Permission check |
+| Example: Username + Password | View/Edit/Delete permissions |
+
+Example:
+
+-   Login with email + password → **Authentication**
+-   Access Employee records → **Authorization**
+
+* * * * *
+
+### Q2. Difference between Profile and Permission Set?
+
+| Profile | Permission Set |
+| --- | --- |
+| Mandatory for every user | Optional |
+| Controls base access | Adds extra access |
+| One user → One profile | One user → Multiple permission sets |
+| Defines object, field, app permissions | Extends permissions without changing profile |
+
+Example:
+
+-   Employee Profile → Basic access
+-   Course Management Permission Set → Extra course permissions
+
+Think:
+
+```
+Profile = Base Package
+Permission Set = Add-on Package
+```
+
+* * * * *
+
+### Q3. Difference between Role and Profile?
+
+| Role | Profile |
+| --- | --- |
+| Controls record visibility | Controls actions and permissions |
+| Who can see records | What users can do |
+| Based on hierarchy | Based on access rights |
+
+Example:
+
+Profile:
+
+```
+Can Create Employee
+Can Edit Enrollment
+```
+
+Role:
+
+```
+Manager can see subordinate records
+```
+
+Quick memory:
+
+-   **Profile → Actions**
+-   **Role → Visibility**
+
+* * * * *
+
+### Q4. OWD = Private → User A owns record. User B sees it?
+
+Answer:\
+❌ **No (by default).**
+
+If **OWD (Organization-Wide Default) = Private**:
+
+-   Only record owner
+-   Users above owner in role hierarchy
+-   Explicit sharing
+
+can access the record.
+
+Example:
+
+```
+User A → Owns EnrollmentUser B → Cannot see
+```
+
+Unless access is granted.
+
+* * * * *
+
+### Q5. Design security
+
+Requirement:
+
+-   Employees → see own enrollments only
+-   Managers → see team enrollments
+-   HR → see all employee records
+
+### Profiles
+
+| Profile | Access |
+| --- | --- |
+| Employee Profile | Read/Create own enrollments |
+| Manager Profile | Read team enrollments |
+| HR Profile | Full employee access |
+
+Profiles control:
+
+-   Object permissions
+-   Field permissions
+-   Apps/Tabs
+
+* * * * *
+
+### Roles
+
+Role Hierarchy:
+
+```
+HR
+↓
+Managers
+↓
+Employees
+```
+
+Effect:
+
+-   Managers see employee records below them
+-   HR sees all
+
+* * * * *
+
+### OWD
+
+Set:
+
+```
+Employee → PrivateEnrollment → Private
+```
+
+Reason:\
+Default access should be restricted.
+
+* * * * *
+
+### Sharing Rules
+
+Create sharing:
+
+```
+Share Employee records
+From → All Employees
+To → HR
+Access → Read/Write
+```
+
+Optional:
+
+```
+Share Enrollment
+From → Manager Role
+To → Team Managers
+```
+
+Final Security Model:
+
+| Layer | Configuration |
+| --- | --- |
+| Profiles | Actions |
+| Roles | Visibility |
+| OWD | Private |
+| Sharing Rules | Exceptions |
+
+Result:\
+✅ Employees → own records only\
+✅ Managers → team visibility\
+✅ HR → complete employee visibility
+
+Lesson 9 --- Salesforce Flow Builder
+====================================
+
+This is one of the most important Salesforce Admin topics.
+
+Modern Salesforce automation is centered around **Flow Builder**.
+
+If you become strong in Flow, you become highly valuable as a Salesforce Admin.
+
+* * * * *
+
+Learning Objectives
+===================
+
+By the end of this lesson you should understand:
+
+1.  What Flow Builder is
+2.  Why Salesforce moved to Flow
+3.  Flow Architecture
+4.  Types of Flows
+5.  Flow Components
+6.  Record-Triggered Flow
+7.  Screen Flow
+8.  Scheduled Flow
+9.  Autolaunched Flow
+10. Real Project Automation Design
+11. Best Practices
+
+* * * * *
+
+1\. What is Flow?
+=================
+
+Flow is Salesforce's **low-code / no-code automation engine**.
+
+It automates business processes without writing code.
+
+Think:
+
+```
+Trigger
+  ↓
+Decision
+  ↓
+Action
+  ↓
+Result
+```
+
+Example:
+
+```
+Employee enrolls
+  ↓
+Set Status
+  ↓
+Send Email
+  ↓
+Update Employee
+```
+
+Automation completed.
+
+* * * * *
+
+Why Flow?
+=========
+
+Old Salesforce automation:
+
+```
+Workflow Rules
+Process Builder
+```
+
+Modern Salesforce:
+
+```
+Flow Builder
+```
+
+Salesforce recommends Flow for nearly all new automation.
+
+Reason:
+
+-   More powerful
+-   Better performance
+-   Supports complex logic
+-   Can replace multiple tools
+
+* * * * *
+
+2\. Open Flow Builder
+=====================
+
+Navigate:
+
+```
+Setup
+ ↓
+Flow
+ ↓
+New Flow
+```
+
+Flow canvas appears.
+
+This is where automation is designed.
+
+* * * * *
+
+3\. Flow Architecture
+=====================
+
+Every Flow follows:
+
+```
+Start
+ ↓
+Get Data
+ ↓
+Decision
+ ↓
+Action
+ ↓
+End
+```
+
+Example:
+
+```
+Enrollment Created
+ ↓
+Get Employee
+ ↓
+Check Status
+ ↓
+Update Record
+ ↓
+Send Email
+```
+
+* * * * *
+
+4\. Types of Flow
+=================
+
+There are four major flows.
+
+* * * * *
+
+A. Record-Triggered Flow (Most Important)
+=========================================
+
+Runs automatically when records change.
+
+Trigger:
+
+```
+Create
+Update
+Delete
+```
+
+No user clicks.
+
+* * * * *
+
+Example
+-------
+
+Requirement:
+
+Whenever Enrollment is created:
+
+```
+Status = Enrolled
+```
+
+Flow:
+
+```
+Enrollment Created
+  ↓
+Assignment
+  ↓
+Update Status
+```
+
+* * * * *
+
+Real Cases
+----------
+
+-   Auto create Tasks
+-   Update parent records
+-   Send notifications
+-   Trigger approvals
+
+* * * * *
+
+Types
+-----
+
+### Before Save
+
+Runs before database save.
+
+Use:
+
+```
+Fast updates
+```
+
+Example:
+
+Auto calculate fields.
+
+* * * * *
+
+### After Save
+
+Runs after save.
+
+Use:
+
+```
+Related updates
+Emails
+Create records
+```
+
+* * * * *
+
+Example:
+
+```
+Enrollment saved
+  ↓
+Create Certification
+```
+
+* * * * *
+
+B. Screen Flow
+==============
+
+Shows UI screens.
+
+User interacts.
+
+Flow:
+
+```
+Open Screen
+  ↓
+Enter Values
+  ↓
+Submit
+```
+
+* * * * *
+
+Example
+-------
+
+Employee Enrollment:
+
+```
+Select Course
+  ↓
+Select Duration
+  ↓
+Submit
+  ↓
+Create Enrollment
+```
+
+* * * * *
+
+Use Screen Flow for:
+
+-   Wizards
+-   Forms
+-   Guided setup
+-   Portals
+
+* * * * *
+
+C. Scheduled Flow
+=================
+
+Runs at scheduled times.
+
+Trigger:
+
+```
+Daily
+Weekly
+Monthly
+```
+
+* * * * *
+
+Example:
+
+Every day:
+
+```
+Find expired certifications
+  ↓
+Send reminder
+```
+
+* * * * *
+
+Use Cases:
+
+-   Notifications
+-   Cleanup
+-   Reports
+-   Batch updates
+
+* * * * *
+
+D. Autolaunched Flow
+====================
+
+Runs silently.
+
+No UI.
+
+Starts from:
+
+-   Apex
+-   Another Flow
+-   API
+-   Button
+
+* * * * *
+
+Example:
+
+Certification complete:
+
+```
+Update Employee
+  ↓
+Send Email↓Create Log
+```
+
+* * * * *
+
+5\. Flow Elements (Building Blocks)
+===================================
+
+* * * * *
+
+Start
+-----
+
+Flow entry point.
+
+Example:
+
+```
+Record Created
+```
+
+* * * * *
+
+Get Records
+-----------
+
+Fetch data.
+
+Example:
+
+```
+Get Employee
+```
+
+Equivalent:
+
+```
+SELECT
+```
+
+* * * * *
+
+Create Records
+--------------
+
+Insert records.
+
+Example:
+
+```
+Create Enrollment
+```
+
+Equivalent:
+
+```
+INSERT
+```
+
+* * * * *
+
+Update Records
+--------------
+
+Modify records.
+
+Example:
+
+```
+Update Certification
+```
+
+Equivalent:
+
+```
+UPDATE
+```
+
+* * * * *
+
+Delete Records
+--------------
+
+Remove records.
+
+Equivalent:
+
+```
+DELETE
+```
+
+* * * * *
+
+Decision
+--------
+
+IF / ELSE logic.
+
+Example:
+
+```
+Score > 80
+```
+
+* * * * *
+
+Assignment
+----------
+
+Store values.
+
+Example:
+
+```
+Status = Completed
+```
+
+* * * * *
+
+Loop
+----
+
+Process collections.
+
+Example:
+
+```
+Process enrollments
+```
+
+* * * * *
+
+Send Email
+----------
+
+Notify users.
+
+Example:
+
+```
+Course Completed
+```
+
+* * * * *
+
+6\. Build Our Project Flow
+==========================
+
+Requirement:
+
+When Certification Status becomes Completed:
+
+System should:
+
+-   Update Employee
+-   Mark Certified
+-   Send Email
+
+Flow Design:
+
+```
+Record Trigger
+  ↓
+Decision
+  ↓
+Update Employee
+  ↓
+Send Email↓End
+```
+
+* * * * *
+
+Configuration
+-------------
+
+Object:
+
+```
+Certification
+```
+
+Trigger:
+
+```
+Updated
+```
+
+Condition:
+
+```
+Status = Completed
+```
+
+Actions:
+
+```
+Update Employee
+Set Certified=True
+Send Email
+```
+
+* * * * *
+
+7\. Flow Best Practices
+=======================
+
+### Keep one purpose per flow
+
+Good:
+
+```
+Enrollment Automation
+```
+
+Bad:
+
+```
+Everything Flow
+```
+
+* * * * *
+
+### Avoid unnecessary loops
+
+Bad performance.
+
+* * * * *
+
+### Use Before Save for updates
+
+Faster.
+
+* * * * *
+
+### Add descriptions
+
+Document flows.
+
+* * * * *
+
+### Test in Sandbox
+
+Never directly in Production.
+
+* * * * *
+
+Interview Questions
+===================
+
+### What replaced Workflow Rules?
+
+Answer:\
+Flow Builder.
+
+* * * * *
+
+### Difference between Before Save and After Save?
+
+Before:
+
+```
+Fast field updates
+```
+
+After:
+
+```
+Related recordsEmails
+```
+
+* * * * *
+
+### Which flow shows screens?
+
+Screen Flow.
+
+### Q1. What is Flow?
+
+A **Flow** is Salesforce's automation tool used to automate business processes without writing code.
+
+Flow can:
+
+-   Create records
+-   Update records
+-   Delete records
+-   Send emails
+-   Display screens
+-   Make decisions
+-   Automate workflows
+
+Think:
+
+```
+Trigger
+  ↓
+Logic
+  ↓
+Action
+```
+
+Example:\
+Employee completes course → Update certification → Send email.
+
+* * * * *
+
+### Q2. Difference between Record Triggered Flow and Screen Flow?
+
+| Record Triggered Flow | Screen Flow |
+| --- | --- |
+| Runs automatically | Requires user interaction |
+| Triggered by record create/update/delete | Triggered from UI |
+| No user screens | Has screens/forms |
+| Used for automation | Used for guided processes |
+
+Example:
+
+-   Enrollment created → Auto update status → **Record Triggered**
+-   Employee registration form → **Screen Flow**
+
+* * * * *
+
+### Q3. Difference between Before Save and After Save?
+
+| Before Save | After Save |
+| --- | --- |
+| Runs before record is committed | Runs after record is saved |
+| Faster | Slightly slower |
+| Used to update same record | Used for related records, email, actions |
+
+Example:
+
+-   Set Status automatically → Before Save
+-   Send Email → After Save
+
+Memory trick:
+
+```
+Before Save → Modify
+After Save → Act
+```
+
+* * * * *
+
+### Q4. Business Case:
+
+When Enrollment created → Set Status = Enrolled.
+
+Which Flow type?
+
+✅ **Record Triggered Flow → Before Save**
+
+Reason:
+
+-   Triggered automatically
+-   Updates same Enrollment record
+-   Best performance
+
+Flow:
+
+```
+Enrollment Created
+  ↓
+Set Status = Enrolled
+  ↓
+Save
+```
+
+* * * * *
+
+### Q5. Design Flow
+
+Requirement:\
+If Certification Status = Completed
+
+Then:
+
+-   Employee Is Certified = True
+-   Send Email
+
+### Trigger
+
+```
+Record Triggered Flow
+ ↓
+Object → Certification
+ ↓
+Record Updated
+ ↓
+Decision:
+Status = Completed
+ ↓
+Update Employee
+ ↓
+Send Email
+ ↓
+End
+```
+
+* * * * *
+
+### Decision
+
+Decision Element:
+
+```
+Certification Status = Completed ?
+```
+
+Outcomes:
+
+-   Yes → Continue
+-   No → End
+
+* * * * *
+
+### Actions
+
+Action 1:
+
+```
+Update Records
+Employee.Is_Certified = TRUE
+```
+
+Action 2:
+
+```
+Send Email
+Subject:
+Certification Completed
+
+Body:
+Hello,
+
+Your certification has been completed successfully.
+
+Employee certification status has been updated.
+
+Thank you.
+```
+
+Flow Design:
+
+```
+Start
+↓
+Record Triggered Flow
+↓
+Object: Certification
+↓
+Trigger:
+A record is updated
+↓
+Condition:
+Status__c = "Completed"
+↓
+Decision:
+Certification Completed?
+├── Yes
+│    ↓
+│  Update Records
+│  Employee__r.Is_Certified__c = TRUE
+│    ↓
+│  Action:
+│  Send Email
+│    ↓
+│  End
+│
+└── No
+     ↓
+    End
+```
+
+This is a standard **Record Triggered Flow + Decision + Actions** pattern in Salesforce Admin automation. ✅
+
+Lesson 10 --- Approval Processes (Enterprise Automation)
+======================================================
+
+Approvals are used when records require authorization before moving forward.
+
+Examples:
+
+-   Manager approval
+-   HR approval
+-   Expense approval
+-   Course approval
+
+Learning Objectives
+-------------------
+
+1.  What Approval Process is
+2.  Approval Lifecycle
+3.  Approval Components
+4.  Entry Criteria
+5.  Approval Actions
+6.  Project Approval Design
+
+* * * * *
+
+What is Approval Process?
+=========================
+
+Approval Process automates:
+
+```
+Submit
+  ↓
+Approve / Reject
+  ↓
+Execute Actions
+```
+
+Example:
+
+Employee requests certification.
+
+Manager approves.
+
+System updates status.
+
+* * * * *
+
+Approval Lifecycle
+==================
+
+```
+Draft
+  ↓
+Submitted
+  ↓
+Pending Approval
+  ↓
+Approved/Rejected
+```
+
+* * * * *
+
+Components
+==========
+
+Entry Criteria
+--------------
+
+Defines:
+
+```
+When approval starts
+```
+
+Example:
+
+```
+Course Cost > 50000
+```
+
+* * * * *
+
+Approver
+--------
+
+Who approves?
+
+Example:
+
+```
+Manager
+HR
+Queue
+Specific User
+```
+
+* * * * *
+
+Approval Actions
+----------------
+
+### Initial Submission
+
+Example:
+
+```
+Lock Record
+Send Email
+```
+
+* * * * *
+
+### Final Approval
+
+Example:
+
+```
+Update Status
+Create Certification
+```
+
+* * * * *
+
+### Final Rejection
+
+Example:
+
+```
+Set Status = Rejected
+```
+
+* * * * *
+
+Project Scenario
+================
+
+Requirement:
+
+Employee enrolls in premium course.
+
+Rule:
+
+```
+Cost > ₹25,000
+```
+
+Process:
+
+```
+Submit Enrollment
+  ↓
+Manager Approval
+  ↓
+HR Approval
+  ↓
+Approved
+  ↓
+Create Certification
+```
+
+### Q1. What is an Approval Process?
+
+An **Approval Process** in Salesforce is an automation that routes records to one or more users for approval before the record can move forward.
+
+Flow:
+
+```
+Record Submitted
+  ↓
+Approval Request
+  ↓
+Approve / Reject
+  ↓
+Final Action
+```
+
+Example:\
+Course costing ₹30,000 requires manager approval before enrollment.
+
+* * * * *
+
+### Q2. Difference between Flow and Approval Process?
+
+| Flow | Approval Process |
+| --- | --- |
+| Automates business processes | Automates approvals |
+| Can update/create/delete records | Focused on approve/reject |
+| Supports decisions and actions | Supports approval hierarchy |
+| Flexible automation | Structured approval routing |
+
+Example:
+
+-   Auto update Enrollment → **Flow**
+-   Course approval workflow → **Approval Process**
+
+* * * * *
+
+### Q3. What is Entry Criteria?
+
+**Entry Criteria** defines the conditions that must be true for a record to enter the approval process.
+
+Think:
+
+```
+Record
+  ↓
+Check Conditions
+  ↓
+Eligible → Enter Approval
+```
+
+Example:
+
+```
+Course_Cost__c > 25000
+```
+
+Only records matching this condition enter approval.
+
+* * * * *
+
+### Q4. Who can act as Approver?
+
+Approvers can be:
+
+-   Specific User
+-   Manager
+-   Role
+-   Queue
+-   Related User
+-   Automated Approver assignment
+
+Example:
+
+-   Employee's Manager
+-   HR Manager
+-   Department Head
+
+* * * * *
+
+### Q5. Design approval
+
+Requirement:\
+If Course Cost > ₹25,000:
+
+1.  Manager approves
+2.  HR approves
+3.  Enrollment Status = Approved
+
+### Entry Criteria
+
+Formula:
+
+```
+Course_Cost__c > 25000
+```
+
+* * * * *
+
+### Approvers
+
+Step 1:
+
+```
+Approver:Employee Manager
+```
+
+Step 2:
+
+```
+Approver:HR Team / HR Manager
+```
+
+Approval Chain:
+
+```
+Manager
+↓
+HR
+↓
+Complete
+```
+
+* * * * *
+
+### Actions
+
+Initial Submission Action:
+
+```
+Lock Record
+```
+
+Approval Step Actions:
+
+Manager Approved:
+
+```
+Move to HR Approval
+```
+
+Final Approval Actions:
+
+```
+Update Enrollment_Status__c = "Approved"
+Send Notification Email
+Unlock Record
+```
+
+Flow:
+
+```
+Enrollment Submitted
+↓
+Entry Criteria
+(Cost > ₹25,000)
+↓
+Manager Approval
+↓
+HR Approval
+↓
+Update Status = Approved
+↓
+End
+```
+
+This is a **multi-step approval process** with sequential approvals. ✅
 
 
