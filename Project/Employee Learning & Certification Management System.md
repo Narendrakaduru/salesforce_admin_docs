@@ -226,7 +226,7 @@ Record Name:
 Employee ID
 ```
 
-Select:
+Data Type:
 
 ```
 Auto Number
@@ -667,9 +667,186 @@ Cancelled
 
 Save.
 
+### 12. Add Tabs to Employee Learning System App
+
+Do this after creating:
+
+```
+Employee
+Course
+Enrollment
+Skill
+Certification
+```
+
 ---
 
-### 12. Validate Build
+#### Method 1 (Recommended) — From App Manager
+
+Navigate:
+
+```
+Setup
+↓
+App Manager
+```
+
+Search:
+
+```
+Employee Learning System
+```
+
+Click:
+
+```
+▼ Edit
+```
+
+Open:
+
+```
+Navigation Items
+```
+
+You will see:
+
+```
+Available Items
+← →
+Selected Items
+```
+
+---
+
+#### Add Tabs
+
+Search and move one by one:
+
+Move →
+
+```
+Employee
+```
+
+Move →
+
+```
+Course
+```
+
+Move →
+
+```
+Enrollment
+```
+
+Move →
+
+```
+Skill
+```
+
+Move →
+
+```
+Certification
+```
+
+Also add:
+
+```
+Reports
+Dashboards
+```
+
+---
+
+#### Arrange Order
+
+Recommended order:
+
+```
+Home
+Employee
+Skill
+Course
+Enrollment
+Certification
+Reports
+Dashboards
+```
+
+Use:
+
+```
+↑
+↓
+```
+
+to reorder.
+
+---
+
+#### Save
+
+Click:
+
+```
+Save
+```
+
+---
+
+### Verify Tabs
+
+Navigate:
+
+```
+App Launcher
+↓
+Employee Learning System
+```
+
+Expected:
+
+```
+Employee Learning System
+Home
+Employee
+Skill
+Course
+Enrollment
+Certification
+Reports
+Dashboards
+```
+
+---
+
+### Why We Add Tabs After Objects?
+
+Because:
+
+```
+Object
+↓
+Generates Tab
+↓
+Tab added into App
+```
+
+If object does not exist:
+
+```
+No Object
+↓
+No Tab
+```
+
+---
+
+### 13. Validate Build
 
 Create:
 
