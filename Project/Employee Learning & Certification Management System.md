@@ -88,10 +88,12 @@ Architecture:
 
 ```
 Employee
+│
 ├──── Skills
+│
 ├──── Certifications
+│
 └──── Enrollments
-           │
            │
            ▼
          Course
@@ -102,15 +104,19 @@ Meaning:
 Employee:
 
 ```
-Narendra
-```
+One Employee
+↓
+Many Skills
 
-Can have:
+One Employee
+↓
+Many Certifications
 
-```
-3 Skills
-5 Courses
-2 Certifications
+Many Employees
+↓
+Many Courses
+↓
+Enrollment
 ```
 
 ---
@@ -497,7 +503,114 @@ Employee is complete.
 
 ---
 
-### 7. Create Course Object
+### 7. Create Skill Object
+
+Question:
+
+> Where do employee skills get stored?
+
+Business says:
+
+One Employee can have multiple skills.
+
+Example:
+
+```
+Narendra
+↓
+Salesforce
+↓
+DevOps
+↓
+AWS
+```
+
+Create:
+
+```
+Setup
+↓
+Object Manager
+↓
+Create
+↓
+Custom Object
+```
+
+Fill:
+
+| Field | Value |
+| --- | --- |
+| Label | Skill |
+| Plural | Skills |
+| Record Name | Skill Name |
+| Data Type | Text |
+
+Enable:
+
+☑ Allow Reports\
+☑ Track Activities
+
+Save.
+
+---
+
+#### Create Skill Fields
+
+Navigate:
+
+```
+Skill
+↓
+Fields & Relationships
+↓
+New
+```
+
+Create:
+
+| Field | Type |
+| --- | --- |
+| Skill Category | Picklist |
+| Skill Level | Picklist |
+| Employee | Lookup(Employee) |
+
+Skill Category:
+
+```
+Technical
+Leadership
+Business
+```
+
+Skill Level:
+
+```
+Beginner
+Intermediate
+Advanced
+Expert
+```
+
+Architecture:
+
+```
+Employee
+↓
+Skill
+```
+
+Meaning:
+
+```
+One Employee
+↓
+Many Skills
+```
+
+---
+
+### 8. Create Course Object
 
 Question:
 
@@ -537,7 +650,7 @@ Save.
 
 ---
 
-### 8. Create Enrollment (Most Important)
+### 9. Create Enrollment (Most Important)
 
 Business says:
 
@@ -584,7 +697,99 @@ Save.
 
 ---
 
-### 9. Create Relationship — Employee to Enrollment
+### 10. Create Certification Object
+
+Question:
+
+> Where do completed certifications get stored?
+
+Business Requirement:
+
+Employees complete courses and receive certifications.
+
+Navigate:
+
+```
+Setup
+↓
+Object Manager
+↓
+Create
+↓
+Custom Object
+```
+
+Fill:
+
+| Field | Value |
+| --- | --- |
+| Label | Certification |
+| Plural | Certifications |
+| Record Name | Certification ID |
+| Type | Auto Number |
+
+Display Format:
+
+```
+CERT-{0000}
+```
+
+Starting Number:
+
+```
+1
+```
+
+Enable:
+
+☑ Reports\
+☑ Activities
+
+Save.
+
+---
+
+#### Create Certification Fields
+
+Navigate:
+
+```
+Certification
+↓
+Fields & Relationships
+↓
+New
+```
+
+Create:
+
+| Field | Type |
+| --- | --- |
+| Certification Name | Text |
+| Completion Date | Date |
+| Expiry Date | Date |
+| Score | Percent |
+| Employee | Lookup(Employee) |
+
+Meaning:
+
+```
+Employee
+↓
+Certification
+```
+
+Result:
+
+```
+One Employee
+↓
+Many Certifications
+```
+
+---
+
+### 11. Create Relationship — Employee to Enrollment
 
 Navigate:
 
@@ -616,9 +821,18 @@ Enrollment belongs to Employee.
 
 ---
 
-### 10. Create Relationship — Course to Enrollment
+### 12. Create Relationship — Course to Enrollment
 
-Create again:
+Navigate:
+
+```
+Enrollment
+↓
+Fields
+↓
+New
+```
+Choose:
 
 ```
 Master Detail
@@ -646,7 +860,7 @@ Many-to-Many created.
 
 ---
 
-### 11. Add Enrollment Fields
+### 13. Add Enrollment Fields
 
 Create:
 
@@ -667,7 +881,53 @@ Cancelled
 
 Save.
 
-### 12. Add Tabs to Employee Learning System App
+---
+
+### 14. Create Object Tabs
+
+Navigate:
+
+```
+Setup
+↓
+Tabs
+↓
+New
+```
+
+Choose:
+
+```
+Custom Object Tab
+```
+
+Create tabs:
+
+```
+Employee
+Skill
+Course
+Enrollment
+Certification
+```
+
+Choose any icon.
+
+Save.
+
+Reason:
+
+```
+Object
+↓
+Creates Tab
+↓
+Tab Added To App
+```
+
+---
+
+### 15. Add Tabs to Employee Learning System App
 
 Do this after creating:
 
@@ -846,9 +1106,9 @@ No Tab
 
 ---
 
-### 13. Validate Build
+### 16. Validate Build
 
-Create:
+Create records.
 
 Employee:
 
@@ -856,39 +1116,48 @@ Employee:
 Narendra
 ```
 
-Create:
+Skill:
+
+```
+Salesforce Admin
+Advanced
+```
 
 Course:
 
 ```
-Salesforce Admin
+Salesforce Administrator
 ```
-
-Create:
 
 Enrollment:
 
 ```
 Narendra
 ↓
-Salesforce Admin
+Salesforce Administrator
+```
+
+Certification:
+
+```
+Administrator Certification
 ```
 
 Open Employee.
 
-Verify:
-
-Related List:
+Verify Related Lists:
 
 ```
+Skills
 Enrollments
+Certifications
 ```
 
 If visible:
 
-Build successful.
-
----
+```
+Build Successful
+```
 
 ### End of Phase 1
 
@@ -899,13 +1168,21 @@ Application
 ↓
 Employee
 ↓
+Skill
+↓
 Course
 ↓
 Enrollment
 ↓
+Certification
+↓
 Relationships
 ↓
+Tabs
+↓
 Sample Data
+↓
+Validation
 ```
 
 ---
