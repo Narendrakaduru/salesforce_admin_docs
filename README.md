@@ -27,6 +27,7 @@
 | 16 | Data Management | Data Ops | [Lesson-16](./Lessons/Lesson-16_Data_Management.md) |
 | 17 | Deployment, Sandbox & Change Sets | Release Mgmt | [Lesson-17](./Lessons/Lesson-17_Deployment_Sandbox_and_Change_Sets.md) |
 | 18 | Salesforce DevOps Basics | DevOps | [Lesson-18](./Lessons/Lesson-18_Salesforce_DevOps_Basics.md) |
+| 19 | Employee Learning & Certification Management System | Real Enterprise Project | [Lesson-19](./Project/Employee%20Learning%20%26%20Certification%20Management%20System.md) |
 
 ---
 
@@ -101,6 +102,18 @@ Deploy changes safely and build a DevOps pipeline.
 
 - **Lesson 17** — Sandboxes, Change Sets, deployment strategies.
 - **Lesson 18** — Salesforce DX, CI/CD, version control, DevOps Center.
+
+---
+
+### Real Enterprise Project (Lesson 19)
+Apply every concept from Lessons 1–18 to build a complete, production-ready Salesforce application from scratch.
+
+- **Lesson 19** — [Employee Learning & Certification Management System](./Project/Employee%20Learning%20%26%20Certification%20Management%20System.md)
+  - **Phase 1** — Requirements → Architecture → Objects → Fields → Relationships
+  - **Phase 2** — Security → OWD → Roles → Profiles → Page Layouts
+  - **Phase 3** — Automation → Flows → Validation Rules → Approval Process
+  - **Phase 4** — Reports → Dashboards → Analytics
+  - **Phase 5** — Testing → Deployment Checklist → Go Live
 
 ---
 
