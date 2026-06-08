@@ -27,7 +27,6 @@
 | 16 | Data Management | Data Ops | [Lesson-16](./Lessons/Lesson-16_Data_Management.md) |
 | 17 | Deployment, Sandbox & Change Sets | Release Mgmt | [Lesson-17](./Lessons/Lesson-17_Deployment_Sandbox_and_Change_Sets.md) |
 | 18 | Salesforce DevOps Basics | DevOps | [Lesson-18](./Lessons/Lesson-18_Salesforce_DevOps_Basics.md) |
-| 19 | Employee Learning & Certification Management System | Real Enterprise Project | [Lesson-19](./Project/Employee%20Learning%20%26%20Certification%20Management%20System.md) |
 
 ---
 
